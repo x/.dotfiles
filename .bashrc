@@ -7,7 +7,7 @@ alias la="ls -al"
 alias ll="ls -l"
 alias ..="cd .."
 alias vi="vim"
-alias ls="ls --color"
+alias ls="ls -G"
 
 alias cd="clear; cd $@"
 
@@ -21,3 +21,5 @@ export editor=vim
 
 alias jshint="clear; jshint"
 alias node="clear; node"
+
+alias update="cp ~/dotfiles/.bashrc ~/dotfiles/.vimrc ~/dotfiles/.tmux.conf ~/ > /dev/null; source .bashrc"

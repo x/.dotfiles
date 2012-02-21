@@ -29,5 +29,7 @@ let g:tex_flavor='latex'
 
 set t_Co=256
 
+syntax on
+
 " coffeescript magic autocompile
 autocmd BufWritePost *.coffee silent CoffeeMake! -b | cwindow
