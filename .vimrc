@@ -30,6 +30,6 @@ let g:tex_flavor='latex'
 set t_Co=256
 
 syntax on
-
+hi link coffeeSpaceError NONE
 " coffeescript magic autocompile
 autocmd BufWritePost *.coffee silent CoffeeMake! -b | cwindow
