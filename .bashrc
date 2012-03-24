@@ -15,8 +15,8 @@ alias reset="source $HOME/.bashrc && clear"
 alias la="ls -al"
 alias ll="ls -l"
 alias ..="cd .."
-alias vi="vim"
 alias :q="exit"
+alias vi="vim"
 
 
 # asthetics aliases
@@ -27,6 +27,9 @@ alias node="clear; node"
 alias coffee="clear; coffee"
 
 
-# custom commands
-alias update="cp ~/dotfiles/.bashrc ~/dotfiles/.vimrc ~/dotfiles/.tmux.conf ~/ > /dev/null; source ~/.bashrc"
+# 256 colors in tmux
+alias tmux="tmux -2"
 
+
+# for updating dotfiles
+alias update="cp ~/dotfiles/.bashrc ~/dotfiles/.vimrc ~/dotfiles/.tmux.conf ~/ > /dev/null; source ~/.bashrc"
