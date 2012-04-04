@@ -29,4 +29,4 @@ alias coffee="clear; coffee"
 
 # custom commands
 alias update="cp ~/dotfiles/.bashrc ~/dotfiles/.vimrc ~/dotfiles/.tmux.conf ~/ > /dev/null; source ~/.bashrc"
-
+alias artem="ssh devon@ec2-107-20-71-36.compute-1.amazonaws.com"
