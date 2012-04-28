@@ -15,9 +15,9 @@ alias reset="source $HOME/.bashrc && clear"
 alias la="ls -al"
 alias ll="ls -l"
 alias ..="cd .."
-alias vi="vim"
 alias :q="exit"
-
+alias vi="vim"
+alias pdf="evince"
 
 # asthetics aliases
 alias ls="ls -G"
@@ -30,3 +30,30 @@ alias coffee="clear; coffee"
 # custom commands
 alias update="cp ~/dotfiles/.bashrc ~/dotfiles/.vimrc ~/dotfiles/.tmux.conf ~/ > /dev/null; source ~/.bashrc"
 alias artem="ssh devon@ec2-107-20-71-36.compute-1.amazonaws.com"
+
+# 256 colors in tmux
+alias tmux="tmux -2"
+
+
+
+
+mycd(){
+  unalias cd
+  clear
+
+  if [ $# -ne 1 ]
+  then
+    cd ~
+    echo -e "[\e[01;32m`whoami`@`hostname`:\e[01;34m~\e[00m]$ ls"
+  else
+    cd $1
+    echo -e "[\e[01;32m`whoami`@`hostname`:\e[01;34m${PWD##*/}\e[00m]$ ls"
+  fi
+
+  pwd
+  ls
+  alias cd=mycd
+}
+
+alias cd=mycd
+alias ls=ls --color=always
