@@ -1,4 +1,3 @@
-
 fun! MySys()
    return "$1"
 endfun
