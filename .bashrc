@@ -7,11 +7,11 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 PATH=/usr/local/bin:$PATH
 
 # other exports
-export PS1="[\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;32m\]\W\[\033[00m\]]\$ "
+#export PS1="[\[\033[01;31m\]\u@\h\[\033[00m\]:\[\033[01;32m\]\W\033[00m\]]\$ "
 export editor=vim
 
 # show working branch in status
-PS1='[\W$(__git_ps1 " (%s)")]\$ '
+PS1='\[\033[01;36m\]\W\033[00;34m\]$(__git_ps1 "|%s")\033[00m\] \$ '
 export PROMPT_COMMAND='echo -ne "\033]0;${PWD/#$HOME/~}\007"'
 
 
