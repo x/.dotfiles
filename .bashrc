@@ -12,7 +12,7 @@ export editor=vim
 
 # show working branch in status
 PS1='\[\033[01;36m\]\W\033[00;34m\]$(__git_ps1 "|%s")\033[00m\] \$ '
-export PROMPT_COMMAND='echo -ne "\033]0;${PWD/#$HOME/~}\007"'
+#export PROMPT_COMMAND='echo -ne "\033]0;${PWD/#$HOME/~}\007"'
 
 
 # shortcut aliases
@@ -73,3 +73,20 @@ fi
 
 # git branches autocomplete script, require .git-completion.bash in ~
 source ~/.git-completion.bash
+
+
+# Git Aliases
+get_git_branch() {
+	  echo `git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)//'`
+  }
+alias gc='git commit -am'
+alias gs='git status'
+
+# Pushes current branch only
+alias gps='git push origin `get_git_branch`'
+
+# Pulls current branch only
+alias gpl='git pull origin `get_git_branch`'
+
+# Pretty color graph
+#alias glg='git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%an, %cr)%Creset' --abbrev-commit --date=relative --topo-order'
