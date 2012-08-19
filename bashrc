@@ -4,7 +4,7 @@ PATH=$PATH:$HOME/.rvm/bin
 export editor=vim
 
 # show working branch in status
-PS1='\[\033[01;36m\]\W\033[00;34m\]$(__git_ps1 "|%s")\033[00m\] \$ '
+#PS1='\[\033[01;36m\]\W\033[00;34m\]$(__git_ps1 "|%s")\033[00m\] \$ '
 #export PROMPT_COMMAND='echo -ne "\033]0;${PWD/#$HOME/~}\007"'
 
 # shortcut aliases
@@ -31,12 +31,12 @@ alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/serv
 alias pgstop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 
 # start tmux on startup
-if [ $TERM != "screen-256color" ] && [  $TERM != "screen" ]; then
-    tmux attach || tmux new; exit
-fi
+#if [ $TERM != "screen-256color" ] && [  $TERM != "screen" ]; then
+#    tmux attach || tmux new; exit
+#fi
 
 # git branches autocomplete script, require .git-completion.bash in ~
-source ~/.dotfiles/git-completion.bash
+source ~/.dotfiles/scripts/git-completion.bash
 
 # git aliases
 get_git_branch() {
