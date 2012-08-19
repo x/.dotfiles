@@ -1,0 +1,30 @@
+#! /bin/bash
+
+ignore=( hooks scripts backups )
+
+DIR=~/.dotfiles
+cd $DIR
+
+for filename in *
+do
+	shouldIgnore=false
+	for ignorename in ${ignore[@]}
+	do
+		if [[ $filename == $ignorename ]]
+		then
+			shouldIgnore=true
+		fi
+	done
+
+	if [ $shouldIgnore == false -a ! -L ~/.$filename ]
+	then
+		# move old versions moved to backup dir
+		if [ -e ~/.$filename ]
+		then
+			echo ${filename} moved to ${DIR}/backups/${filename}
+			mv ~/.$filename $DIR/backups/
+		fi
+		echo new link ~/.${filename} to ${DIR}/backups/${filename}
+		ln -s $DIR/$filename ~/.$filename
+	fi
+done
