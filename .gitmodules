@@ -13,3 +13,7 @@
 [submodule "vim/bundle/ruby"]
 	path = vim/bundle/ruby
 	url = git://github.com/vim-ruby/vim-ruby.git
+
+[submodule "vim/bundle/vim-powerline"]
+	path = vim/bundle/vim-powerline
+	url = git://github.com/Lokaltog/vim-powerline.git
