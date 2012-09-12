@@ -25,7 +25,7 @@ imap jj <Esc>
 syntax on
 
 " enable pathogen plugins
-runtime bundle/pathogen/autoload/pathogen.vim
+"runtime bundle/pathogen/autoload/pathogen.vim
 call pathogen#infect()
 filetype plugin indent on
 
