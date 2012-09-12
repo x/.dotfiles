@@ -1,6 +1,11 @@
 " fix vim compatability
 set nocompatible
 
+" enable pathogen plugins
+runtime bundle/pathogen/autoload/pathogen.vim
+call pathogen#infect()
+filetype plugin indent on
+
 " support 256 terminal colors
 set t_Co=256
 
@@ -15,6 +20,9 @@ set shiftwidth=4
 " show line numbers
 set number
 
+" keep powerline on
+set laststatus=2
+
 " colors
 colorscheme ron
 
@@ -23,11 +31,6 @@ imap jj <Esc>
 
 " turn on syntax highlighting
 syntax on
-
-" enable pathogen plugins
-"runtime bundle/pathogen/autoload/pathogen.vim
-call pathogen#infect()
-filetype plugin indent on
 
 " turn off whitespace highlighting with the coffeescript plugin
 hi link coffeeSpaceError NONE
