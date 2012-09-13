@@ -35,4 +35,4 @@ do
 done
 
 # update the submodules
-git submodule update
+git submodule update --init

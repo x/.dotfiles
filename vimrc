@@ -36,20 +36,27 @@ syntax on
 hi link coffeeSpaceError NONE
 
 " highlight anything over 80 columns wide
-highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
-match OverLength /\%81v.\+/
+fun! HighlightOver()
+	highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
+	match OverLength /\%81v.\+/
+endfun
 
-" set ruby tabs
-autocmd FileType ruby set shiftwidth=2
-autocmd FileType ruby set softtabstop=2
-autocmd FileType ruby set tabstop=2
+" set ruby preferences
+autocmd FileType ruby
+	\ set expandtab |
+	\ set shiftwidth=2 |
+	\ set softtabstop=2 |
+	\ call HighlightOver()
 
 " set html tabs
-autocmd FileType html set shiftwidth=2
-autocmd FileType html set softtabstop=2
-autocmd FileType html set tabstop=2
+autocmd FileType html 
+	\ set shiftwidth=2 |
+	\ set softtabstop=2 |
+	\ tabstop=2
 
 " set coffee tabs
-autocmd FileType coffee set shiftwidth=2
-autocmd FileType coffee set softtabstop=2
-autocmd FileType coffee set tabstop=2
+autocmd FileType coffeescript
+	\ set expandtab |
+	\ set shiftwidth=2 |
+	\ set softtabstop=2 |
+	\ call HighlightOver()
