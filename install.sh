@@ -36,3 +36,6 @@ done
 
 # update the submodules
 git submodule update --init
+
+# source bashrc
+source ~/.bashrc
