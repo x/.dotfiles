@@ -1,5 +1,5 @@
 # add RVM to PATH for scripting
-PATH=$PATH:$HOME/.rvm/bin
+PATH=/usr/local/bin:/usr/local/share/npm/bin:$PATH:$HOME/.rvm/bin
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
 export editor=vim
