@@ -4,6 +4,7 @@ set nocompatible
 " enable pathogen plugins
 runtime bundle/pathogen/autoload/pathogen.vim
 call pathogen#infect()
+
 filetype plugin indent on
 
 " support 256 terminal colors
@@ -51,11 +52,16 @@ autocmd FileType ruby
 " set html tabs
 autocmd FileType html 
 	\ set shiftwidth=2 |
-	\ set softtabstop=2 |
-	\ tabstop=2
+	\ set tabstop=2
+
+" set html tabs
+autocmd FileType jade
+	\ set expandtab |
+	\ set shiftwidth=2 |
+	\ set softtabstop=2
 
 " set coffee tabs
-autocmd FileType coffeescript
+autocmd FileType coffee
 	\ set expandtab |
 	\ set shiftwidth=2 |
 	\ set softtabstop=2 |
