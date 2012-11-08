@@ -1,5 +1,5 @@
 # add RVM to PATH for scripting
-PATH=/usr/local/bin:/usr/local/share/npm/bin:$PATH:$HOME/.rvm/bin
+PATH=$HOME/local/bin:/usr/local/bin:/usr/local/share/npm/bin:$PATH:$HOME/.rvm/bin:/filer/tmp2/contrib/bin
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
 export editor=vim
@@ -18,7 +18,7 @@ alias vi="vim"
 alias pdf="evince"
 
 # asthetics aliases
-alias ls="ls -G"
+alias ls="ls --color"
 alias jshint="clear; jshint"
 alias node="clear; node"
 alias coffee="clear; coffee"
