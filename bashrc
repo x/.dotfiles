@@ -4,6 +4,9 @@ PATH=$HOME/local/bin:/usr/local/bin:/usr/local/share/npm/bin:$PATH:$HOME/.rvm/bi
 
 export editor=vim
 
+# source my xmodmap
+xmodmap ~/.xmodmap
+
 # show working branch in status
 #PS1='\[\033[01;36m\]\W\033[00;34m\]$(__git_ps1 "|%s")\033[00m\] \$ '
 #export PROMPT_COMMAND='echo -ne "\033]0;${PWD/#$HOME/~}\007"'
