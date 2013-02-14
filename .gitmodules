@@ -16,3 +16,9 @@
 [submodule "vim/bundle/vim-jade"]
 	path = vim/bundle/vim-jade
 	url = git://github.com/digitaltoad/vim-jade.git
+[submodule "/home/devon/.dotfiles/vim/bundle/syntastic"]
+	path = /home/devon/.dotfiles/vim/bundle/syntastic
+	url = git://github.com/scrooloose/syntastic.git
+[submodule "/home/devon/.dotfiles/vim/bundle/vim-rails"]
+	path = /home/devon/.dotfiles/vim/bundle/vim-rails
+	url = git://github.com/tpope/vim-rails.git

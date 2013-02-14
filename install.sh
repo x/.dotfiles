@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 ignore=( scripts backups install.sh )
 

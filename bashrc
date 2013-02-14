@@ -2,6 +2,9 @@
 PATH=$HOME/local/bin:/usr/local/bin:/usr/local/share/npm/bin:$PATH:$HOME/.rvm/bin:/filer/tmp2/contrib/bin
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
+# source nvm to load prefs and shit
+. ~/nvm/nvm.sh
+
 export editor=vim
 
 # show working branch in status
