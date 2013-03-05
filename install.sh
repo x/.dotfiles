@@ -39,3 +39,6 @@ git submodule update --init
 
 # source bashrc
 source ~/.bashrc
+
+
+# to add new submodules use git submodule add [repo] [path to folder]
