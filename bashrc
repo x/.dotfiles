@@ -3,8 +3,9 @@ PATH=$HOME/local/bin:/usr/local/bin:/usr/local/share/npm/bin:$PATH:$HOME/.rvm/bi
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
 # source nvm to load prefs and shit
-. ~/nvm/nvm.sh
+. ~/nvm/nvm.sh 2> /dev/null
 
+export EDITOR=vim
 export editor=vim
 
 # source my xmodmap
@@ -28,7 +29,7 @@ alias ls="ls --color=auto"
 alias jshint="clear; jshint"
 alias node="clear; node"
 alias coffee="clear; coffee"
-alias ack="clear; ack --before-context=2 --after-context=2 --color-filename=blue"
+alias ack="clear; ack-grep --before-context=2 --after-context=2 --color-filename=blue"
 
 # 256 colors in tmux
 alias tmux="tmux -2"
@@ -60,3 +61,6 @@ alias gps='git push origin `get_git_branch`'
 
 # Pulls current branch only
 alias gpl='git pull origin `get_git_branch`'
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
