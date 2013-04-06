@@ -72,3 +72,10 @@ autocmd FileType coffee
 	\ set shiftwidth=2 |
 	\ set softtabstop=2 |
 	\ call HighlightOver()
+
+" set coffee tabs
+autocmd FileType javascript
+	\ set expandtab |
+	\ set shiftwidth=2 |
+	\ set softtabstop=2 |
+	\ call HighlightOver()
