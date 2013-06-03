@@ -74,7 +74,6 @@ alias pdf="evince"
 alias rmswp="rm .*.swp"
 
 # asthetics aliases
-alias ls="ls --color=auto"
 alias jshint="clear; jshint"
 alias node="clear; node"
 alias coffee="clear; coffee"

@@ -34,11 +34,11 @@ do
 	fi
 done
 
-# update the submodules
-git submodule update --init
+# Man, fuck git submodules... I'll update this later to use vundle properly
+## update the submodules
+#git submodule update --init
 
 # source bashrc
 source ~/.bashrc
-
 
 # to add new submodules use git submodule add [repo] [path to folder]
