@@ -54,6 +54,10 @@ nnoremap <C-Right> :tabnext<CR>
 nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
 
+" lightnight fast up and down movement
+nnoremap <c-j> 5j
+nnoremap <c-k> 5k
+
 " turn on syntax highlighting
 syntax on
 

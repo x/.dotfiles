@@ -1,5 +1,4 @@
-# add RVM to PATH for scripting
-PATH=$HOME/local/bin:/usr/local/bin:/usr/local/share/npm/bin:$PATH:$HOME/.rvm/bin:/filer/tmp2/contrib/bin
+PATH=$HOME/local/bin:/usr/local/bin:/usr/local/share/python:/usr/local/share/npm/bin:$PATH:$HOME/.rvm/bin
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
 # virtualenv
@@ -77,7 +76,7 @@ alias rmswp="rm .*.swp"
 alias jshint="clear; jshint"
 alias node="clear; node"
 alias coffee="clear; coffee"
-alias ack="clear; ack-grep --before-context=2 --after-context=2 --color-filename=blue"
+alias ack="clear; ack --before-context=2 --after-context=2 --color-filename=blue"
 
 # 256 colors in tmux
 alias tmux="tmux -2"
@@ -112,3 +111,10 @@ alias gpl='git pull origin `get_git_branch`'
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+# Chartbeat bits
+vmstart() { /Users/devon/chartbeat/external/vmutils/vmstart.sh "$@" ;}
+vmpoweroff() { /Users/devon/chartbeat/external/vmutils/vmpoweroff.sh "$@" ;}
+vmnew() { /Users/devon/chartbeat/external/vmutils/vmnew.sh "$@" ;}
+vmclean() { /Users/devon/chartbeat/external/vmutils/vmclean "$@" ;}
+vmdel() { /Users/devon/chartbeat/external/vmutils/vmdel "$@" ;}

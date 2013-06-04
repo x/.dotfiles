@@ -5,8 +5,8 @@
 echo "Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)"
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
-echo "Enable the 2D Dock"
-defaults write com.apple.dock no-glass -bool true
+# echo "Enable the 2D Dock"
+# defaults write com.apple.dock no-glass -bool true
 
 echo "Make Dock icons of hidden applications translucent"
 defaults write com.apple.dock showhidden -bool true
