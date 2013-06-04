@@ -32,7 +32,7 @@ set t_Co=256
 set pastetoggle=<F2>
 
 " Normal indentation rules
-set smartindent
+set autoindent
 set tabstop=4
 set shiftwidth=4
 
@@ -69,6 +69,10 @@ fun! HighlightOver()
 	highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
 	match OverLength /\%81v.\+/
 endfun
+
+" set C preferences
+autocmd FileType c
+	\ call HighlightOver()
 
 " set ruby preferences
 autocmd FileType ruby
