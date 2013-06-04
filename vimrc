@@ -24,7 +24,6 @@ Bundle 'scrooloose/syntastic.git'
 Bundle 'plasticboy/vim-markdown.git'
 
 filetype plugin indent on
->>>>>>> bcab87073c2354b1e467acd4fe0573435fd4f229
 
 " support 256 terminal colors
 set t_Co=256
