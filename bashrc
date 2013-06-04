@@ -1,5 +1,5 @@
 # add RVM to PATH for scripting
-PATH=$HOME/local/bin:/usr/local/bin:/usr/local/share/npm/bin:$PATH:$HOME/.rvm/bin:/filer/tmp2/contrib/bin
+PATH=/sbin:/user/sbin:$HOME/local/bin:/usr/local/bin:/usr/local/share/npm/bin:$PATH:$HOME/.rvm/bin:/filer/tmp2/contrib/bin
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
 # virtualenv
@@ -10,6 +10,9 @@ PATH=$HOME/local/bin:/usr/local/bin:/usr/local/share/npm/bin:$PATH:$HOME/.rvm/bi
 #. ~/nvm/nvm.sh 2> /dev/null
 
 export EDITOR=vim
+
+# set editor to vim mode
+set -o vi
 
 # source my xmodmap
 xmodmap ~/.xmodmap 2>/dev/null
@@ -72,6 +75,10 @@ alias :q="exit"
 alias vi="vim"
 alias pdf="evince"
 alias rmswp="rm .*.swp"
+
+# for tmux
+alias tls="tmux list-sessions"
+alias tas="tmux attach-session -t"
 
 # asthetics aliases
 alias ls="ls --color=auto"

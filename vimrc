@@ -4,8 +4,8 @@ set nocompatible
 " enable pathogen plugins
 runtime bundle/pathogen/autoload/pathogen.vim
 call pathogen#infect()
-
-filetype plugin indent on
+" enable this for pugins to work
+"filetype plugin indent on
 
 " support 256 terminal colors
 set t_Co=256
@@ -14,7 +14,7 @@ set t_Co=256
 set pastetoggle=<F2>
 
 " Normal indentation rules
-set smartindent
+set autoindent
 set tabstop=4
 set shiftwidth=4
 
@@ -47,6 +47,10 @@ fun! HighlightOver()
 	highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
 	match OverLength /\%81v.\+/
 endfun
+
+" set C preferences
+autocmd FileType c
+	\ call HighlightOver()
 
 " set ruby preferences
 autocmd FileType ruby
