@@ -1,11 +1,30 @@
 " fix vim compatability
 set nocompatible
 
-" enable pathogen plugins
-runtime bundle/pathogen/autoload/pathogen.vim
-call pathogen#infect()
-" enable this for pugins to work
-"filetype plugin indent on
+" FUCK PATHOGEN, SWITCHING TO VUNDLE
+"" enable pathogen plugins
+"runtime bundle/pathogen/autoload/pathogen.vim
+"call pathogen#infect()
+
+" Vundle magic
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
+
+" Let Vundle manage Vundle
+Bundle 'gmarik/vundle'
+
+" plugins from Github managed by vundle
+Bundle 'kchmck/vim-coffee-script.git'
+Bundle 'vim-ruby/vim-ruby.git'
+Bundle 'Lokaltog/vim-powerline.git'
+Bundle 'kien/ctrlp.vim.git'
+Bundle 'tpope/vim-pathogen.git'
+Bundle 'digitaltoad/vim-jade.git'
+Bundle 'scrooloose/syntastic.git'
+Bundle 'plasticboy/vim-markdown.git'
+
+filetype plugin indent on
+>>>>>>> bcab87073c2354b1e467acd4fe0573435fd4f229
 
 " support 256 terminal colors
 set t_Co=256

@@ -81,7 +81,6 @@ alias tls="tmux list-sessions"
 alias tas="tmux attach-session -t"
 
 # asthetics aliases
-alias ls="ls --color=auto"
 alias jshint="clear; jshint"
 alias node="clear; node"
 alias coffee="clear; coffee"
