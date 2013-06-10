@@ -1,0 +1,13 @@
+[user]
+	email = devon@chartbeat.com
+	name = Devon Peticolas
+[color]
+	ui = true
+[diff]
+	tool = vimdiff
+[alias]
+	d = difftool
+	co = checkout
+	s = status
+	l = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	p = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -p

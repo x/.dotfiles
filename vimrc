@@ -7,6 +7,11 @@ set nocompatible
 "call pathogen#infect()
 
 " Vundle magic
+"
+" Installation:
+" 	open vim
+" 	run :BundleInstall
+"
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 
@@ -14,7 +19,6 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " plugins from Github managed by vundle
-Bundle 'kchmck/vim-coffee-script.git'
 Bundle 'vim-ruby/vim-ruby.git'
 Bundle 'Lokaltog/vim-powerline.git'
 Bundle 'kien/ctrlp.vim.git'
@@ -22,11 +26,15 @@ Bundle 'tpope/vim-pathogen.git'
 Bundle 'digitaltoad/vim-jade.git'
 Bundle 'scrooloose/syntastic.git'
 Bundle 'plasticboy/vim-markdown.git'
+Bundle 'davidhalter/jedi-vim.git'
 
 filetype plugin indent on
 
-" support 256 terminal colors
+" set 256 colors
 set t_Co=256
+
+" turn on syntax highlighting
+syntax on
 
 " map f2 to toggle past mode
 set pastetoggle=<F2>
@@ -43,7 +51,7 @@ set number
 set laststatus=2
 
 " colors
-colorscheme ron
+colorscheme jellybeans
 
 " map jj to normal mode
 imap jj <Esc>
@@ -58,9 +66,6 @@ nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
 nnoremap <c-j> 5j
 nnoremap <c-k> 5k
 
-" turn on syntax highlighting
-syntax on
-
 " turn off whitespace highlighting with the coffeescript plugin
 hi link coffeeSpaceError NONE
 
@@ -69,6 +74,9 @@ fun! HighlightOver()
 	highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
 	match OverLength /\%81v.\+/
 endfun
+
+" fuck trailing whitespace
+autocmd BufWritePre *.py :%s/\s\+$//e
 
 " set C preferences
 autocmd FileType c
@@ -99,9 +107,16 @@ autocmd FileType coffee
 	\ set softtabstop=2 |
 	\ call HighlightOver()
 
-" set coffee tabs
+" set javascript tabs
 autocmd FileType javascript
 	\ set expandtab |
 	\ set shiftwidth=2 |
 	\ set softtabstop=2 |
+	\ call HighlightOver()
+
+" set python tabs
+autocmd FileType python
+	\ set expandtab |
+	\ set shiftwidth=4 |
+	\ set softtabstop=4 |
 	\ call HighlightOver()
