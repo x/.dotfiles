@@ -83,7 +83,7 @@ alias tas="tmux attach-session -t"
 alias jshint="clear; jshint"
 alias node="clear; node"
 alias coffee="clear; coffee"
-alias ack="clear; ack --before-context=2 --after-context=2 --color-filename=blue"
+alias ack="clear; ack"
 
 # 256 colors in tmux
 alias tmux="tmux -2"
