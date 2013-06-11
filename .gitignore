@@ -4,3 +4,6 @@
 *~
 backups
 custom.vim
+
+vim/bundle/*
+!vim/bundle/vundle

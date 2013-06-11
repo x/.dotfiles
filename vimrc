@@ -27,6 +27,7 @@ Bundle 'digitaltoad/vim-jade.git'
 Bundle 'scrooloose/syntastic.git'
 Bundle 'plasticboy/vim-markdown.git'
 Bundle 'davidhalter/jedi-vim.git'
+Bundle 'rodjek/vim-puppet.git'
 
 filetype plugin indent on
 
