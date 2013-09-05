@@ -28,6 +28,12 @@ Bundle 'scrooloose/syntastic.git'
 Bundle 'plasticboy/vim-markdown.git'
 Bundle 'davidhalter/jedi-vim.git'
 Bundle 'rodjek/vim-puppet.git'
+Bundle 'ervandew/supertab.git'
+Bundle 'airblade/vim-gitgutter.git'
+Bundle 'ingydotnet/yaml-vim.git'
+Bundle 'scrooloose/nerdtree.git'
+Bundle 'hynek/vim-python-pep8-indent.git'
+Bundle 'tpope/vim-fugitive.git'
 
 filetype plugin indent on
 
@@ -36,6 +42,9 @@ set t_Co=256
 
 " turn on syntax highlighting
 syntax on
+
+" turn on search highlighting
+set hlsearch
 
 " map f2 to toggle past mode
 set pastetoggle=<F2>
@@ -57,67 +66,105 @@ colorscheme jellybeans
 " map jj to normal mode
 imap jj <Esc>
 
-" change tabs using ctrl+arrow keys
-nnoremap <C-Left> :tabprevious<CR>
-nnoremap <C-Right> :tabnext<CR>
-nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
-nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
+"highlight current line
+set cursorline cursorcolumn
 
-" lightnight fast up and down movement
-nnoremap <c-j> 5j
-nnoremap <c-k> 5k
+" super fast up and down movement
+nnoremap <c-j> 5<c-e>
+nnoremap <c-k> 5<c-y>
 
-" turn off whitespace highlighting with the coffeescript plugin
-hi link coffeeSpaceError NONE
+" configure NerdTree
+map <C-n> :NERDTreeToggle<CR>
+let g:NERDTreeWinSize = 40
+let NERDTreeChDirMode=2
+
+" shortcut to toggle git gutter
+inoremap <c-s> <Esc>:GitGutterToggle<CR>
 
 " highlight anything over 80 columns wide
 fun! HighlightOver()
-	highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
+ 	highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 	match OverLength /\%81v.\+/
 endfun
 
-" fuck trailing whitespace
-autocmd BufWritePre *.py :%s/\s\+$//e
+" fuck trailing whitespace function
+fun! FuckTrailingWhitespace()
+	autocmd BufWritePre <buffer> :%s/\s\+$//e
+endfun
 
-" set C preferences
+" set C preferences (chartbeat does spaces?)
 autocmd FileType c
-	\ call HighlightOver()
+	\ set expandtab |
+	\ set softtabstop=4 |
+	\ call HighlightOver() |
+	\ call FuckTrailingWhitespace()
+
+" set C++ preferences (chartbeat does spaces?)
+autocmd FileType c++
+	\ set expandtab |
+	\ set softtabstop=4 |
+	\ call HighlightOver() |
+	\ call FuckTrailingWhitespace()
 
 " set ruby preferences
 autocmd FileType ruby
 	\ set expandtab |
 	\ set shiftwidth=2 |
 	\ set softtabstop=2 |
-	\ call HighlightOver()
+	\ call HighlightOver() |
+	\ call FuckTrailingWhitespace()
 
-" set html tabs
+" set html preferences
 autocmd FileType html 
 	\ set shiftwidth=2 |
-	\ set tabstop=2
+	\ set tabstop=2 |
+	\ call FuckTrailingWhitespace()
 
-" set html tabs
+" set html preferences
 autocmd FileType jade
 	\ set expandtab |
 	\ set shiftwidth=2 |
-	\ set softtabstop=2
+	\ set softtabstop=2 |
+	\ call FuckTrailingWhitespace() 
 
-" set coffee tabs
+" set coffee preferences
 autocmd FileType coffee
 	\ set expandtab |
 	\ set shiftwidth=2 |
 	\ set softtabstop=2 |
-	\ call HighlightOver()
+    \ hi link coffeeSpaceError NONE
+	\ call HighlightOver() |
+	\ call FuckTrailingWhitespace()
 
-" set javascript tabs
+" set javascript preferences
 autocmd FileType javascript
 	\ set expandtab |
 	\ set shiftwidth=2 |
 	\ set softtabstop=2 |
-	\ call HighlightOver()
+	"\ call HighlightOver() |
+	\ call FuckTrailingWhitespace()
 
-" set python tabs
+" set python preferences
 autocmd FileType python
-	\ set expandtab |
 	\ set shiftwidth=4 |
 	\ set softtabstop=4 |
-	\ call HighlightOver()
+    \ set smarttab |
+	\ set expandtab |
+	\ call HighlightOver() |
+	\ call FuckTrailingWhitespace() |
+    \ let g:syntastic_python_checkers = ['pyflakes']
+
+" set puppet preferences
+autocmd FileType puppet
+	\ set expandtab |
+	\ set shiftwidth=2 |
+	\ set softtabstop=2 |
+	\ call HighlightOver() |
+	\ call FuckTrailingWhitespace()
+
+" set yaml preferences
+autocmd FileType yaml
+	\ set expandtab |
+	\ set shiftwidth=2 |
+	\ set softtabstop=2 |
+	\ call FuckTrailingWhitespace()

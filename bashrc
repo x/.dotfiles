@@ -1,4 +1,4 @@
-PATH=$HOME/local/bin:/usr/local/bin:/usr/local/share/python:/usr/local/share/npm/bin:$PATH:$HOME/.rvm/bin
+PATH=$HOME/local/bin:/usr/local/bin:/usr/local/share/npm/lib/node_modules/:$PATH:$HOME/.rvm/bin
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
 # virtualenv
@@ -22,7 +22,7 @@ function parse_git_branch() {
 	if [ ! "${BRANCH}" == "" ]
 	then
 		STAT=`parse_git_dirty`
-		echo "[${BRANCH}${STAT}]"
+		echo "(${BRANCH}${STAT})"
 	else
 		echo ""
 	fi
@@ -57,13 +57,24 @@ function parse_git_dirty {
 		bits="!${bits}"
 	fi
 	if [ ! "${bits}" == "" ]; then
-		echo " ${bits}"
+		echo "${bits}"
 	else
 		echo ""
 	fi
 }
 
-export PS1="\[\e[37m\]\u\[\e[m\]@\[\e[33m\]\h\[\e[m\]:\W\[\e[36m\]\`parse_git_branch\`\[\e[m\] "
+short_pwd() {
+    cwd=$(pwd | perl -F/ -ane 'print join( "/", map { $i++ < @F - 1 ?  substr $_,0,1 : $_ } @F)')
+    echo -n $cwd
+}
+
+function open_git_compare() {
+	BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
+	REPO=`git remote -v | grep -m 1 'github' | cut -f2 | cut -c16- | cut -d'.' -f1`
+	open "http://github.com/${REPO}/compare/${BRANCH}"
+}
+
+export PS1="\$(short_pwd)\[\e[36m\]\`parse_git_branch\`\[\e[m\] "
 
 # shortcut aliases
 alias reset="source $HOME/.bashrc && clear"
@@ -120,5 +131,6 @@ export PATH="/usr/local/heroku/bin:$PATH"
 vmstart() { /Users/devon/chartbeat/external/vmutils/vmstart.sh "$@" ;}
 vmpoweroff() { /Users/devon/chartbeat/external/vmutils/vmpoweroff.sh "$@" ;}
 vmnew() { /Users/devon/chartbeat/external/vmutils/vmnew.sh "$@" ;}
-vmclean() { /Users/devon/chartbeat/external/vmutils/vmclean "$@" ;}
-vmdel() { /Users/devon/chartbeat/external/vmutils/vmdel "$@" ;}
+vmclean() { /Users/devon/chartbeat/external/vmutils/vmclean.sh "$@" ;}
+vmdel() { /Users/devon/chartbeat/external/vmutils/vmdel.sh "$@" ;}
+vmflipnw() { /Users/devon/chartbeat/external/vmutils/vmflipnw.sh "$@" ;}
