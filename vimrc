@@ -67,7 +67,7 @@ colorscheme jellybeans
 imap jj <Esc>
 
 "highlight current line
-set cursorline cursorcolumn
+set cursorline "cursorcolumn
 
 " super fast up and down movement
 nnoremap <c-j> 5<c-e>

@@ -1,13 +1,29 @@
-PATH=$HOME/local/bin:/usr/local/bin:/usr/local/share/npm/lib/node_modules/:$PATH:$HOME/.rvm/bin
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+#HACK
+alias harp="/usr/local/share/npm/lib/node_modules/harp/bin/harp"
 
-# virtualenv
-#export WORKON_HOME=$HOME/.virtualenvs
+export PATH=$PATH:/usr/local/bin
+
+# for go
+export GOVERSION="1.1"
+export GOROOT=$(brew --prefix)/Cellar/go/$GOVERSION
+export GOPATH=$(brew --prefix)/Cellar/go/$GOVERSION/bin
+
+# for node
+export PATH=/usr/local/share/npm:$PATH
+
+# for ruby
+#PATH=$PATH:$HOME/.rvm/bin
+#[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+
+# for python
+export PATH=/usr/local/lib:$PATH
 #source /usr/local/bin/virtualenvwrapper.sh
 
-# source nvm to load prefs and shit
-#. ~/nvm/nvm.sh 2> /dev/null
+# for heroku
+export PATH="/usr/local/heroku/bin:$PATH"
 
+
+# ALWAYS VIM
 export EDITOR=vim
 
 # set editor to vim mode
@@ -68,12 +84,6 @@ short_pwd() {
     echo -n $cwd
 }
 
-function open_git_compare() {
-	BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
-	REPO=`git remote -v | grep -m 1 'github' | cut -f2 | cut -c16- | cut -d'.' -f1`
-	open "http://github.com/${REPO}/compare/${BRANCH}"
-}
-
 export PS1="\$(short_pwd)\[\e[36m\]\`parse_git_branch\`\[\e[m\] "
 
 # shortcut aliases
@@ -99,22 +109,13 @@ alias ack="clear; ack"
 # 256 colors in tmux
 alias tmux="tmux -2"
 
-# start and stop postgres
-alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
-alias pgstop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
-
-# start tmux on startup
-#if [ $TERM != "screen-256color" ] && [  $TERM != "screen" ]; then
-#    tmux attach || tmux new; exit
-#fi
-
 # git branches autocomplete script, require .git-completion.bash in ~
 source ~/.dotfiles/scripts/git-completion.bash
 
 # git aliases
 get_git_branch() {
-	  echo `git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)//'`
-  }
+	echo `git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)//'`
+}
 alias gc='git commit -am'
 alias gs='git status'
 
@@ -124,8 +125,6 @@ alias gps='git push origin `get_git_branch`'
 # Pulls current branch only
 alias gpl='git pull origin `get_git_branch`'
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
 
 # Chartbeat bits
 vmstart() { /Users/devon/chartbeat/external/vmutils/vmstart.sh "$@" ;}
