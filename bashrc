@@ -95,6 +95,7 @@ alias :q="exit"
 alias vi="vim"
 alias pdf="evince"
 alias rmswp="rm .*.swp"
+alias ls="ls -G"
 
 # for tmux
 alias tls="tmux list-sessions"
@@ -125,11 +126,10 @@ alias gps='git push origin `get_git_branch`'
 # Pulls current branch only
 alias gpl='git pull origin `get_git_branch`'
 
+vup() {
+	cd ~/vagrant/$@/ && vagrant up
+}
 
-# Chartbeat bits
-vmstart() { /Users/devon/chartbeat/external/vmutils/vmstart.sh "$@" ;}
-vmpoweroff() { /Users/devon/chartbeat/external/vmutils/vmpoweroff.sh "$@" ;}
-vmnew() { /Users/devon/chartbeat/external/vmutils/vmnew.sh "$@" ;}
-vmclean() { /Users/devon/chartbeat/external/vmutils/vmclean.sh "$@" ;}
-vmdel() { /Users/devon/chartbeat/external/vmutils/vmdel.sh "$@" ;}
-vmflipnw() { /Users/devon/chartbeat/external/vmutils/vmflipnw.sh "$@" ;}
+# for chartbeat
+export PYTHONPATH=/usr/local/lib/python2.7/site-packages
+export PYTHONPATH=/Users/devon/chartbeat:$PYTHONPATH

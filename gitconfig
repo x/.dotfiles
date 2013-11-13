@@ -1,6 +1,8 @@
 [user]
 	email = devon@chartbeat.com
 	name = Devon Peticolas
+[push]
+	default = simple
 [color]
 	ui = true
 [diff]
@@ -12,6 +14,5 @@
 	l = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	lb = log --pretty=format:'%h -%d %s (%cr) <%an>' --abbrev-commit
 	p = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -p
-	lf = log --color --graph --pretty=full
 	r = rebase --interactive origin/HEAD
 	yolo = push -f
