@@ -100,7 +100,7 @@ autocmd FileType c
 	\ call FuckTrailingWhitespace()
 
 " set C++ preferences (chartbeat does spaces?)
-autocmd FileType c++
+autocmd FileType cpp
 	\ set expandtab |
 	\ set softtabstop=4 |
 	\ call HighlightOver() |

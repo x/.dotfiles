@@ -5,6 +5,10 @@
 	default = simple
 [color]
 	ui = true
+[color "status"]
+	added = green
+	changed = yellow
+	untracked = cyan
 [diff]
 	tool = vimdiff
 [alias]
