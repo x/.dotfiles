@@ -19,18 +19,13 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " plugins from Github managed by vundle
-Bundle 'vim-ruby/vim-ruby.git'
 Bundle 'Lokaltog/vim-powerline.git'
 Bundle 'kien/ctrlp.vim.git'
 Bundle 'tpope/vim-pathogen.git'
-Bundle 'digitaltoad/vim-jade.git'
 Bundle 'scrooloose/syntastic.git'
 Bundle 'plasticboy/vim-markdown.git'
-Bundle 'davidhalter/jedi-vim.git'
 Bundle 'rodjek/vim-puppet.git'
-Bundle 'ervandew/supertab.git'
 Bundle 'airblade/vim-gitgutter.git'
-Bundle 'ingydotnet/yaml-vim.git'
 Bundle 'scrooloose/nerdtree.git'
 Bundle 'hynek/vim-python-pep8-indent.git'
 Bundle 'tpope/vim-fugitive.git'
@@ -78,12 +73,9 @@ map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeWinSize = 40
 let NERDTreeChDirMode=2
 
-" shortcut to toggle git gutter
-inoremap <c-s> <Esc>:GitGutterToggle<CR>
-
 " highlight anything over 80 columns wide
 fun! HighlightOver()
- 	highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+ 	highlight OverLength ctermbg=darkred ctermfg=white guibg=#592929
 	match OverLength /\%81v.\+/
 endfun
 
@@ -141,7 +133,6 @@ autocmd FileType javascript
 	\ set expandtab |
 	\ set shiftwidth=2 |
 	\ set softtabstop=2 |
-	"\ call HighlightOver() |
 	\ call FuckTrailingWhitespace()
 
 " set python preferences

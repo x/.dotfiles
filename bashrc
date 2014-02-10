@@ -1,12 +1,21 @@
 #HACK
 alias harp="/usr/local/share/npm/lib/node_modules/harp/bin/harp"
 
+# secrets
+source ~/.secrets
+
 export PATH=$PATH:/usr/local/bin
 
+# sync bash history with multiple sessions
+export HISTCONTROL=ignoredups:erasedups
+shopt -s histappend
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+
+
 # for go
-export GOVERSION="1.1"
-export GOROOT=$(brew --prefix)/Cellar/go/$GOVERSION
-export GOPATH=$(brew --prefix)/Cellar/go/$GOVERSION/bin
+#export GOVERSION="1.1"
+#export GOROOT=$(brew --prefix)/Cellar/go/$GOVERSION
+#export GOPATH=$(brew --prefix)/Cellar/go/$GOVERSION/bin
 
 # for node
 export PATH=/usr/local/share/npm:$PATH
