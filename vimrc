@@ -29,6 +29,7 @@ Bundle 'airblade/vim-gitgutter.git'
 Bundle 'scrooloose/nerdtree.git'
 Bundle 'hynek/vim-python-pep8-indent.git'
 Bundle 'tpope/vim-fugitive.git'
+Bundle 'kchmck/vim-coffee-script.git'
 
 filetype plugin indent on
 
@@ -73,11 +74,16 @@ map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeWinSize = 40
 let NERDTreeChDirMode=2
 
-" highlight anything over 80 columns wide
-fun! HighlightOver()
- 	highlight OverLength ctermbg=darkred ctermfg=white guibg=#592929
-	match OverLength /\%81v.\+/
-endfun
+"" highlight anything over 80 columns wide
+"Fun! HighlightOver()
+" 	highlight OverLength ctermbg=darkred ctermfg=white guibg=#592929
+"	match OverLength /\%81v.\+/
+"Endfun
+
+"" mark the 81st column
+:set textwidth=80
+:set colorcolumn=+1
+"execute "set colorcolumn=" . join(range(81,335), ',')
 
 " fuck trailing whitespace function
 fun! FuckTrailingWhitespace()
@@ -86,76 +92,70 @@ endfun
 
 " set C preferences (chartbeat does spaces?)
 autocmd FileType c
-	\ set expandtab |
-	\ set softtabstop=4 |
-	\ call HighlightOver() |
-	\ call FuckTrailingWhitespace()
+			\ set expandtab |
+			\ set softtabstop=4 |
+			\ call FuckTrailingWhitespace()
 
 " set C++ preferences (chartbeat does spaces?)
 autocmd FileType cpp
-	\ set expandtab |
-	\ set softtabstop=4 |
-	\ call HighlightOver() |
-	\ call FuckTrailingWhitespace()
+			\ set expandtab |
+			\ set softtabstop=4 |
+			\ call FuckTrailingWhitespace()
 
 " set ruby preferences
 autocmd FileType ruby
-	\ set expandtab |
-	\ set shiftwidth=2 |
-	\ set softtabstop=2 |
-	\ call HighlightOver() |
-	\ call FuckTrailingWhitespace()
+			\ set expandtab |
+			\ set shiftwidth=2 |
+			\ set softtabstop=2 |
+			\ call FuckTrailingWhitespace()
 
 " set html preferences
 autocmd FileType html 
-	\ set shiftwidth=2 |
-	\ set tabstop=2 |
-	\ call FuckTrailingWhitespace()
+			\ set shiftwidth=2 |
+			\ set tabstop=2 |
+			\ call FuckTrailingWhitespace()
 
 " set html preferences
 autocmd FileType jade
-	\ set expandtab |
-	\ set shiftwidth=2 |
-	\ set softtabstop=2 |
-	\ call FuckTrailingWhitespace() 
+			\ set expandtab |
+			\ set shiftwidth=2 |
+			\ set softtabstop=2 |
+			\ call FuckTrailingWhitespace() 
 
 " set coffee preferences
 autocmd FileType coffee
-	\ set expandtab |
-	\ set shiftwidth=2 |
-	\ set softtabstop=2 |
-    \ hi link coffeeSpaceError NONE
-	\ call HighlightOver() |
-	\ call FuckTrailingWhitespace()
+			\ set expandtab |
+			\ set shiftwidth=2 |
+			\ set softtabstop=2 |
+			\ hi link coffeeSpaceError NONE
+			\ call FuckTrailingWhitespace()
 
 " set javascript preferences
 autocmd FileType javascript
-	\ set expandtab |
-	\ set shiftwidth=2 |
-	\ set softtabstop=2 |
-	\ call FuckTrailingWhitespace()
+			\ set expandtab |
+			\ set shiftwidth=2 |
+			\ set softtabstop=2 |
+			\ call FuckTrailingWhitespace()
 
 " set python preferences
 autocmd FileType python
-	\ set shiftwidth=4 |
-	\ set softtabstop=4 |
-    \ set smarttab |
-	\ set expandtab |
-	\ call HighlightOver() |
-	\ call FuckTrailingWhitespace() |
-    \ let g:syntastic_python_checkers = ['pyflakes']
+			\ set shiftwidth=4 |
+			\ set softtabstop=4 |
+			\ set smarttab |
+			\ set expandtab |
+			\ call FuckTrailingWhitespace() |
+			\ let g:syntastic_python_checkers = ['pyflakes']
 
 " set puppet preferences
 autocmd FileType puppet
-	\ set expandtab |
-	\ set shiftwidth=2 |
-	\ set softtabstop=2 |
-	\ call HighlightOver() |
-	\ call FuckTrailingWhitespace()
+			\ set expandtab |
+			\ set shiftwidth=2 |
+			\ set softtabstop=2 |
+			\ call FuckTrailingWhitespace()
 
 " set yaml preferences
 autocmd FileType yaml
-	\ set expandtab |
-	\ set shiftwidth=2 |
-	\ set softtabstop=2 |
-	\ call FuckTrailingWhitespace()
+			\ set expandtab |
+			\ set shiftwidth=2 |
+			\ set softtabstop=2 |
+			\ call FuckTrailingWhitespace()
