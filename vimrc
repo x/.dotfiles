@@ -81,8 +81,8 @@ let NERDTreeChDirMode=2
 ""Endfun
 
 """ mark the 81st column
-:set textwidth=80
-:set colorcolumn=+1
+":set textwidth=80
+:set colorcolumn=+80
 ""execute "set colorcolumn=" . join(range(81,335), ',')
 
 "" fuck trailing whitespace function

@@ -1,28 +1,7 @@
-#HACK
-alias harp="/usr/local/share/npm/lib/node_modules/harp/bin/harp"
-
-# secrets
-source ~/.secrets
-
 export PATH=$PATH:/usr/local/bin
-
-# sync bash history with multiple sessions
-export HISTCONTROL=ignoredups:erasedups
-shopt -s histappend
-export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
-
-
-# for go
-#export GOVERSION="1.1"
-#export GOROOT=$(brew --prefix)/Cellar/go/$GOVERSION
-#export GOPATH=$(brew --prefix)/Cellar/go/$GOVERSION/bin
 
 # for node
 export PATH=/usr/local/share/npm:$PATH
-
-# for ruby
-#PATH=$PATH:$HOME/.rvm/bin
-#[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
 # for python
 export PATH=/usr/local/lib:$PATH
@@ -31,15 +10,110 @@ export PATH=/usr/local/lib:$PATH
 # for heroku
 export PATH="/usr/local/heroku/bin:$PATH"
 
+# for rvm
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+# sync bash history with multiple sessions
+export HISTCONTROL=ignoredups:erasedups
+shopt -s histappend
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # ALWAYS VIM
 export EDITOR=vim
-
-# set editor to vim mode
 set -o vi
 
 # source my xmodmap
 xmodmap ~/.xmodmap 2>/dev/null
+
+# set prompt
+export PS1="\$(short_pwd)\[\e[36m\]\`parse_git_branch\`\[\e[m\] "
+
+# shortcut aliases
+alias reset="source $HOME/.bashrc && clear"
+alias la="ls -al"
+alias ll="ls -l"
+alias ..="cd .."
+alias :q="exit"
+alias vi="vim"
+alias ls="ls -G"
+
+# for tmux
+alias tls="tmux list-sessions"
+alias tas="tmux attach-session -t"
+
+# asthetics aliases
+alias jshint="clear; jshint"
+alias node="clear; node"
+alias coffee="clear; coffee"
+alias ack="clear; ack"
+
+# 256 colors in tmux
+alias tmux="tmux -2"
+
+
+# git aliases
+alias gc='git commit -am'
+alias gs='git status'
+
+# Pushes current branch only
+alias gps='git push origin `_get_git_branch`'
+
+# Pulls current branch only
+alias gpl='git pull origin `_get_git_branch`'
+
+# vagrant short cuts
+vup() {
+	cd ~/vagrant/$@/ && vagrant up
+}
+
+new_vm() {
+	$HOME/chartbeat/external/vmutils/create_vagrant_vm.py -H $@.chartbeat.com -G $HOME/chartbeat/ -v3
+	cd $HOME/vagrant/$@
+	vagrant up
+}
+
+# git branches autocomplete script, require .git-completion.bash in ~
+source ~/.dotfiles/scripts/git-completion.bash
+
+
+#### Chartbeat specific settings ####
+export PYTHONPATH=/usr/local/lib/python2.7/site-packages
+export PYTHONPATH=/Users/devon/chartbeat:$PYTHONPATH
+
+alias t="tree -I '*.pyc|__init__.py'"
+
+# get the server list for a type
+gsl() {
+	$HOME/chartbeat/external/tools/get_server_list.py $@
+}
+
+# polysh into all servers of a type
+psh() {
+	HOSTS=`gsl $@`
+	
+	# remove the existing entries in ~/.ssh/known_hosts
+	for server in $HOSTS
+	do
+		ssh-keygen -R $server
+	done
+
+	# rescan and add them to known_hosts
+	ssh-keyscan $HOSTS >> $HOME/.ssh/known_hosts
+	
+	# ssh into them simulaneously
+	polysh $HOSTS
+}
+
+
+#### dirty helper functions ####
+function short_pwd() {
+    cwd=$(pwd | perl -F/ -ane 'print join( "/", map { $i++ < @F - 1 ?  substr $_,0,1 : $_ } @F)')
+    echo -n $cwd
+}
+
+function _get_git_branch() {
+	echo `git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)//'`
+}
 
 # get current branch in git repo
 function parse_git_branch() {
@@ -87,58 +161,3 @@ function parse_git_dirty {
 		echo ""
 	fi
 }
-
-short_pwd() {
-    cwd=$(pwd | perl -F/ -ane 'print join( "/", map { $i++ < @F - 1 ?  substr $_,0,1 : $_ } @F)')
-    echo -n $cwd
-}
-
-export PS1="\$(short_pwd)\[\e[36m\]\`parse_git_branch\`\[\e[m\] "
-
-# shortcut aliases
-alias reset="source $HOME/.bashrc && clear"
-alias la="ls -al"
-alias ll="ls -l"
-alias ..="cd .."
-alias :q="exit"
-alias vi="vim"
-alias pdf="evince"
-alias rmswp="rm .*.swp"
-alias ls="ls -G"
-
-# for tmux
-alias tls="tmux list-sessions"
-alias tas="tmux attach-session -t"
-
-# asthetics aliases
-alias jshint="clear; jshint"
-alias node="clear; node"
-alias coffee="clear; coffee"
-alias ack="clear; ack"
-
-# 256 colors in tmux
-alias tmux="tmux -2"
-
-# git branches autocomplete script, require .git-completion.bash in ~
-source ~/.dotfiles/scripts/git-completion.bash
-
-# git aliases
-get_git_branch() {
-	echo `git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)//'`
-}
-alias gc='git commit -am'
-alias gs='git status'
-
-# Pushes current branch only
-alias gps='git push origin `get_git_branch`'
-
-# Pulls current branch only
-alias gpl='git pull origin `get_git_branch`'
-
-vup() {
-	cd ~/vagrant/$@/ && vagrant up
-}
-
-# for chartbeat
-export PYTHONPATH=/usr/local/lib/python2.7/site-packages
-export PYTHONPATH=/Users/devon/chartbeat:$PYTHONPATH
