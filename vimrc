@@ -1,4 +1,4 @@
-" fix vim compatability
+" vestigial
 set nocompatible
 
 " Vundle magic
@@ -15,22 +15,22 @@ Bundle 'gmarik/vundle'
 
 " fancy status bar
 Bundle 'Lokaltog/vim-powerline.git'
-set laststatus=1 " set this to 2 to bring it back
+set laststatus=2
 
-" fuzy search
+" fuzzy search
 Bundle 'kien/ctrlp.vim.git'
-let ctrlp_filter_greps = ".
+let ctrlp_filter_greps = "".
     \ "egrep -iv '\\.(" .
     \ "jar|class|swp|swo|log|so|o|pyc|jpe?g|png|gif|mo|po" .
     \ ")$' | " .
     \ "egrep -v '^(\\./)?(" .
     \ "vendor/|lib/|classes/|libs/|deploy/|.git/|.hg/|.svn/|.*migrations/" .
     \ ")'"
-let my_ctrlp_git_command = " .
+let my_ctrlp_git_command = "" .
     \ "cd %s && git ls-files | " .
     \ ctrlp_filter_greps
 if has("unix")
-    let my_ctrlp_user_command = " .
+    let my_ctrlp_user_command = "" .
     \ "find %s '(' -type f -or -type l ')' -maxdepth 15 -not -path '*/\\.*/*' | " .
     \ ctrlp_filter_greps
 endif
@@ -47,7 +47,13 @@ Bundle 'airblade/vim-gitgutter.git'
 Bundle 'kchmck/vim-coffee-script.git'
 Bundle 'rodjek/vim-puppet.git'
 Bundle 'vim-scripts/python.vim.git'
+Bundle 'guns/vim-clojure-static.git'
 syntax on
+
+" clojure life
+Bundle 'amdt/vim-niji.git'
+Bundle 'tpope/vim-leiningen.git'
+Bundle 'tpope/vim-fireplace.git'
 
 " checking syntax errors
 Bundle 'scrooloose/syntastic.git'
@@ -71,10 +77,9 @@ nnoremap <c-k> 5<c-y>
 set t_Co=256
 
 " colors
-"colorscheme jellybeans
-colorscheme github
+colorscheme jellybeans
 
-" clean up gitgutter
+" clean up itgutter
 highlight clear SignColumn
 
 " turn on search highlighting
@@ -85,10 +90,6 @@ set number
 
 " mark the 81st column
 set colorcolumn=81
-hi ColorColumn ctermbg=lightyellow guibg=lightyellow 
-
-" highlight current line
-"set cursorline cursorcolumn
 
 " Unset undesirable rules
 set nocindent
@@ -149,7 +150,8 @@ autocmd FileType javascript
 			\ set expandtab |
 			\ set shiftwidth=2 |
 			\ set softtabstop=2 |
-			\ call FuckTrailingWhitespace()
+			\ call FuckTrailingWhitespace() |
+			\ let g:syntastic_javascript_checkers=['']
 
 " set python preferences
 autocmd FileType python
@@ -159,6 +161,10 @@ autocmd FileType python
 			\ set expandtab |
 			\ call FuckTrailingWhitespace() |
 			\ let g:syntastic_python_checkers = ['pyflakes']
+
+" set clojure preferences
+autocmd FileType clojure
+			\ call FuckTrailingWhitespace()
 
 " set puppet preferences
 autocmd FileType puppet

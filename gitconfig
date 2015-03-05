@@ -1,8 +1,6 @@
 [user]
 	email = devon@chartbeat.com
 	name = Devon Peticolas
-[push]
-	default = simple
 [color]
 	ui = true
 [color "status"]
@@ -20,3 +18,5 @@
 	p = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -p
 	r = rebase --interactive origin/HEAD
 	yolo = push -f
+[push]
+	default = simple

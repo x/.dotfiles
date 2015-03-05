@@ -17,14 +17,22 @@ export PATH="/usr/local/heroku/bin:$PATH"
 # for rvm
 PATH=$PATH:$HOME/.rvm/bin
 
+# set up ssh-agent with my private key
+eval $(ssh-agent)
+ssh-add ~/.ssh/id_rsa
+
 # sync bash history with multiple sessions
 export HISTCONTROL=ignoredups:erasedups
 shopt -s histappend
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
-# ALWAYS VIM
+# moar history
+export HISTSIZE=5000
+export HISTFILESIZE=5000
+
+# vim worship
+alias vim="mvim -v"
 export EDITOR=vim
-set -o vi
 
 # source my xmodmap
 xmodmap ~/.xmodmap 2>/dev/null
@@ -36,6 +44,13 @@ source `brew --prefix`/etc/bash_completion
 function short_pwd() {
 	echo -n $(pwd | perl -F/ -ane 'print join( "/", map { $i++ < @F - 1 ?  substr $_,0,1 : $_ } @F)')
 }
+function repo() {
+	if [ $(pwd | grep chartbeat) ]; then
+		echo -n '(dev)'
+	elif [ $(pwd | grep oncall) ]; then
+		echo -n '(on-call)'
+	fi
+}
 # set prompt to be a short-hand path with git_ps1
 export PS1="\$(short_pwd)\$(__git_ps1 | tr -d ' ')$ "
 
@@ -46,10 +61,16 @@ alias tmux="tmux -2"
 alias tls="tmux list-sessions"
 alias tas="tmux attach-session -t"
 
+# shortcuts for vagrant
+alias v="vagrant"
+
 # Just for Chartbeat
 # ------------------
 export PYTHONPATH=/usr/local/lib/python2.7/site-packages
 export PYTHONPATH=/Users/devon/chartbeat:$PYTHONPATH
+
+# for sciency things
+alias apython=/Users/devon/anaconda/bin/python
 
 # the worst things in the world to find in our repo
 export FUCKING_GLOBAL_CONFS=/Users/devon/chartbeat/private/puppet/modules/chartbeat/templates/globalconf/
@@ -57,7 +78,7 @@ export NODES_LOCAL=$HOME/chartbeat/private/puppet/manifests/nodes_local.pp
 
 # spin up a new VM
 new_vm() {
-	$HOME/chartbeat/external/vmutils/create_vagrant_vm.py -H $@.chartbeat.net -G $HOME/chartbeat/ -v3 --distro=precise
+	$HOME/chartbeat/external/vmutils/create_vagrant_vm.py -H $@.chartbeat.net -G $HOME/chartbeat/
 	cd $HOME/vagrant/$@
 	vagrant up
 }
