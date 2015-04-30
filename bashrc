@@ -31,14 +31,16 @@ export HISTSIZE=5000
 export HISTFILESIZE=5000
 
 # vim worship
-alias vim="mvim -v"
+#alias vim="mvim -v"
 export EDITOR=vim
 
 # source my xmodmap
 xmodmap ~/.xmodmap 2>/dev/null
 
 # git bash autocomplete
-source `brew --prefix`/etc/bash_completion
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+	source `brew --prefix`/etc/bash_completion
+fi
 
 # set prompt
 function short_pwd() {
