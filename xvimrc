@@ -1,0 +1,21 @@
+" turn on search highlighting
+set hlsearch
+
+" mark the 81st column
+set colorcolumn=81
+
+" shorthand
+imap jj <Esc>
+nnoremap <c-j> 5<c-e>
+nnoremap <c-k> 5<c-y>
+set pastetoggle=<F2>
+
+" Set default indentation rules
+set nocindent
+set nosmartindent
+set tabstop=4
+set shiftwidth=4
+set autoindent
+
+" Fuck trailing whitespace
+autocmd BufWritePre <buffer> :%s/\s\+$//e
