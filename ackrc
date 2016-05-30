@@ -1,9 +1,0 @@
---before-context=2 
---after-context=2 
---color-filename=bold blue
---smart-case
-
---type-set=minjs=.min.js                                                                                  
---nominjs
-
---ignore-dir=media
