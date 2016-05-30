@@ -21,8 +21,11 @@ Plugin 'guns/vim-clojure-static.git'
 Plugin 'vim-scripts/vim-niji.git'
 Plugin 'rodjek/vim-puppet.git'
 
-"indentation
+" indentation
 Plugin 'hynek/vim-python-pep8-indent.git'
+
+" folding
+"Plugin 'gberenfield/cljfold.vim'
 
 " syntax checking
 Plugin 'scrooloose/syntastic.git'
@@ -62,7 +65,8 @@ set nocompatible
 
 " colors
 set t_Co=256
-colorscheme jellybeans
+"colorscheme jellybeans
+colorscheme github
 
 " turn on syntax highlighting
 syntax on
@@ -107,7 +111,7 @@ endfun
 
 autocmd FileType c
 			\ set expandtab |
-			\ set softtabstop=4 |
+			\ set softtabstop=2 |
 			\ call FuckTrailingWhitespace()
 
 autocmd FileType cpp

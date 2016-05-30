@@ -3,7 +3,9 @@ if [ -f $HOME/.secrets ]; then
 	source $HOME/.secrets
 fi
 
+# for my scripts
 export PATH=$PATH:/usr/local/bin
+export PATH=$PATH:~/.dotfiles/bin
 
 # for node
 export PATH=/usr/local/share/npm:$PATH
@@ -15,11 +17,19 @@ export PATH=/usr/local/lib:$PATH
 export PATH="/usr/local/heroku/bin:$PATH"
 
 # for rvm
-PATH=$PATH:$HOME/.rvm/bin
+export PATH=$PATH:$HOME/.rvm/bin
+
+# for chartbeat
+export PATH=/Users/devon/chartbeat/approll:$PATH
+
+# for pebble dev
+#export PATH=~/pebble-dev/pebble-sdk-4.1.1-mac/bin:$PATH
 
 # set up ssh-agent with my private key
-eval $(ssh-agent)
-ssh-add ~/.ssh/id_rsa
+if [ -z "$SSH_AUTH_SOCK" ] ; then
+	eval `ssh-agent -s`
+	ssh-add
+fi
 
 # sync bash history with multiple sessions
 export HISTCONTROL=ignoredups:erasedups
@@ -107,6 +117,10 @@ psh() {
 	
 	# ssh into them simulaneously
 	polysh $hosts 
+}
+
+activate() {
+	. ~/chartbeat/.venv/bin/activate
 }
 
 #  ,__,

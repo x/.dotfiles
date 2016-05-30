@@ -20,3 +20,5 @@
 	yolo = push -f
 [push]
 	default = simple
+[web]
+	browser = open
