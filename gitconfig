@@ -14,6 +14,7 @@
 	co = checkout
 	s = status
 	l = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	ll = log --pretty=format:"%h%x09%an%x09%ad%x09%s"
 	lb = log --pretty=format:'%h -%d %s (%cr) <%an>' --abbrev-commit
 	p = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -p
 	r = rebase --interactive origin/HEAD

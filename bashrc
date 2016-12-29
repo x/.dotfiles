@@ -1,12 +1,3 @@
-# if there's a .secrets file with environment options, source it
-if [ -f $HOME/.secrets ]; then
-	source $HOME/.secrets
-fi
-
-# for my scripts
-export PATH=$PATH:/usr/local/bin
-export PATH=$PATH:~/.dotfiles/bin
-
 # for node
 export PATH=/usr/local/share/npm:$PATH
 
@@ -18,12 +9,6 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 # for rvm
 export PATH=$PATH:$HOME/.rvm/bin
-
-# for chartbeat
-export PATH=/Users/devon/chartbeat/approll:$PATH
-
-# for pebble dev
-#export PATH=~/pebble-dev/pebble-sdk-4.1.1-mac/bin:$PATH
 
 # set up ssh-agent with my private key
 if [ -z "$SSH_AUTH_SOCK" ] ; then
@@ -40,12 +25,8 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 export HISTSIZE=5000
 export HISTFILESIZE=5000
 
-# vim worship
-#alias vim="mvim -v"
+# vim life
 export EDITOR=vim
-
-# source my xmodmap
-xmodmap ~/.xmodmap 2>/dev/null
 
 # git bash autocomplete
 if [ -f `brew --prefix`/etc/bash_completion ]; then
@@ -78,26 +59,10 @@ alias v="vagrant"
 
 # Just for Chartbeat
 # ------------------
-export PYTHONPATH=/usr/local/lib/python2.7/site-packages
-export PYTHONPATH=/Users/devon/chartbeat:$PYTHONPATH
-
-# for sciency things
-alias apython=/Users/devon/anaconda/bin/python
-
-# the worst things in the world to find in our repo
-export FUCKING_GLOBAL_CONFS=/Users/devon/chartbeat/private/puppet/modules/chartbeat/templates/globalconf/
-export NODES_LOCAL=$HOME/chartbeat/private/puppet/manifests/nodes_local.pp
-
-# spin up a new VM
-new_vm() {
-	$HOME/chartbeat/external/vmutils/create_vagrant_vm.py -H $@.chartbeat.net -G $HOME/chartbeat/
-	cd $HOME/vagrant/$@
-	vagrant up
-}
 
 # get the server list for a type
 gsl() {
-	$HOME/chartbeat/external/tools/get_server_list.py $@
+	$HOME/chartbeat/bin/instance_tool get_server_list $@
 }
 
 # polysh into all servers of a type
@@ -119,9 +84,6 @@ psh() {
 	polysh $hosts 
 }
 
-activate() {
-	. ~/chartbeat/.venv/bin/activate
-}
 
 #  ,__,
 #  (oo)____
