@@ -11,5 +11,10 @@
 # Setting up fonts
 ```brew tap caskroom/fonts && brew cask install font-fira-code```
 
-# Using macvim instead of system vim
+# Using macvim instead of system vim (needs full XCode install)
 ```brew install macvim --override-system-vim```
+
+# Other stuff to brew-install
+- git
+- git-lfs
+- tmux
