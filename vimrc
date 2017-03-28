@@ -9,7 +9,7 @@ Plugin 'gmarik/Vundle.vim'
 
 " decoration
 Plugin 'vim-airline/vim-airline'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 
 " git
 Plugin 'tpope/vim-fugitive'
