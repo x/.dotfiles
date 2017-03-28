@@ -50,10 +50,6 @@ export PS1="\$(short_pwd)\$(__git_ps1 | tr -d ' ')$ "
 # 256 colors in tmux
 alias tmux="tmux -2"
 
-# shortcuts for tmux
-alias tls="tmux list-sessions"
-alias tas="tmux attach-session -t"
-
 # shortcuts for vagrant
 alias v="vagrant"
 
