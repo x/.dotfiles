@@ -15,4 +15,11 @@
 ```brew install macvim --override-system-vim```
 
 # Other stuff to brew-install
-```brew intall git bash bash-completion tmux```
+```
+brew intall \
+	git \                        # better than system git
+	bash \                       # better than system bash
+	bash-completion \            # exposes __git_ps1
+	tmux \                       # better than panes in iterm2
+	reattach-to-user-namespace \ # needed for system clipboard copy in tmux
+	```
