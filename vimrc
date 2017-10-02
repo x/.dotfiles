@@ -69,6 +69,9 @@ let g:airline_powerline_fonts = 1
 " vestigial
 set nocompatible
 
+" use system clipboard
+set clipboard=unnamed
+
 " syntax highlighting on
 syntax on
 
