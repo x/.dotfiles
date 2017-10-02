@@ -22,4 +22,4 @@ brew intall \
 	bash-completion \            # exposes __git_ps1
 	tmux \                       # better than panes in iterm2
 	reattach-to-user-namespace \ # needed for system clipboard copy in tmux
-	```
+```
