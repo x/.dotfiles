@@ -15,6 +15,4 @@
 ```brew install macvim --override-system-vim```
 
 # Other stuff to brew-install
-- git
-- git-lfs
-- tmux
+```brew intall git bash bash-completion tmux```
