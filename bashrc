@@ -37,13 +37,7 @@ fi
 function short_pwd() {
 	echo -n $(pwd | perl -F/ -ane 'print join( "/", map { $i++ < @F - 1 ?  substr $_,0,1 : $_ } @F)')
 }
-function repo() {
-	if [ $(pwd | grep chartbeat) ]; then
-		echo -n '(dev)'
-	elif [ $(pwd | grep oncall) ]; then
-		echo -n '(on-call)'
-	fi
-}
+
 # set prompt to be a short-hand path with git_ps1
 export PS1="\$(short_pwd)\$(__git_ps1 | tr -d ' ')$ "
 
@@ -52,37 +46,3 @@ alias tmux="tmux -2"
 
 # shortcuts for vagrant
 alias v="vagrant"
-
-# Just for Chartbeat
-# ------------------
-
-# get the server list for a type
-gsl() {
-	$HOME/chartbeat/bin/instance_tool get_server_list $@
-}
-
-# polysh into all servers of a type
-psh() {
-	local hosts=`gsl $1`
-	local other_args=${2} ... ${10}
-	local server
-	
-	# remove the existing entries in ~/.ssh/known_hosts
-	for server in $hosts
-	do
-		ssh-keygen -R $server
-	done
-
-	# rescan and add them to known_hosts
-	ssh-keyscan $hosts >> $HOME/.ssh/known_hosts
-	
-	# ssh into them simulaneously
-	polysh $hosts 
-}
-
-
-#  ,__,
-#  (oo)____
-#  (__)    )\
-#     ||--|| *
-fortune -s | cowsay
