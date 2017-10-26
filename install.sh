@@ -11,6 +11,7 @@ ln -sF $DIR/gitconfig ~/.gitconfig
 ln -sF $DIR/xvimrc    ~/.xvimrc
 ln -sF $DIR/inputrc   ~/.inputrc
 ln -sF $DIR/hyper.js  ~/.hyper.js
+ln -sF $DIR/psqlrc    ~/.psqlrc
 
 # source bashrc
 echo "sourcing bashrc..."
