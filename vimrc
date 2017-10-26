@@ -33,11 +33,20 @@ Plugin 'rakr/vim-one'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'endel/vim-github-colorscheme'
 
+" Autoformat
+Plugin 'google/vim-maktaba'
+Plugin 'google/vim-codefmt'
+Plugin 'google/vim-glaive'
+
+
 " end vundle plugin list
 call vundle#end()
 
 
 "" --- Plugin Settings ---
+
+" Google Java Formatting
+call glaive#Install()
 
 " gitgutter settings
 highlight clear SignColumn
@@ -85,17 +94,11 @@ hi Normal ctermbg=none
 " turn on search highlighting
 set hlsearch
 
-" turn on plugin indentation
-filetype plugin indent on
-
 " turn on status bar
 set laststatus=2
 
 " show line numbers
 set number
-
-" mark the 81st column
-set colorcolumn=81
 
 " things my fingers have memorized
 imap jj <Esc>
@@ -112,3 +115,17 @@ set autoindent
 
 " Remove all trailing whitespace
 autocmd BufWritePre <buffer> :%s/\s\+$//e
+
+" Set language specific settings
+au FileType python setl sw=4 sts=4 et cc=81
+au FileType java set sw=2 sts=2 noai et tw=100 cc=101
+
+" Auto-format settings. See: https://github.com/google/vim-codefmt for more
+augroup autoformat_settings
+  autocmd FileType java AutoFormatBuffer google-java-format
+  "autocmd FileType python AutoFormatBuffer autopep8
+  autocmd FileType python AutoFormatBuffer yapf
+augroup END
+
+" turn on plugin indentation
+filetype plugin indent on

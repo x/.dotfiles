@@ -1,14 +1,18 @@
-# for node
-export PATH=/usr/local/share/npm:$PATH
-
-# for python
-export PATH=/usr/local/lib:$PATH
+# for homebrew python (brew install python) to override system python
+export PATH=/usr/local/opt/python/libexec/bin:$PATH
 
 # for heroku
 export PATH="/usr/local/heroku/bin:$PATH"
 
+# for node
+export PATH=/usr/local/share/npm:$PATH
+
 # for rvm
 export PATH=$PATH:$HOME/.rvm/bin
+
+# for gcloud
+. /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc
+. /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc
 
 # set up ssh-agent with my private key
 if [ -z "$SSH_AUTH_SOCK" ] ; then
@@ -46,3 +50,14 @@ alias tmux="tmux -2"
 
 # shortcuts for vagrant
 alias v="vagrant"
+
+## Oden Crap ##
+export PATH=/Users/devon/scripts:$PATH
+
+function qa() {
+	gcloud config configurations activate qa && gcloud container clusters get-credentials services-1 --zone us-east1-d --project oden-qa && export GCE_PROJECT=oden-qa && export DRONE_SERVER=https://drone.oden-qa.io
+}
+
+function prod() {
+	gcloud config configurations activate prod && gcloud container clusters get-credentials services-1 --zone us-east1-d --project oden-production && export GCE_PROJECT=oden-production
+}
