@@ -13,14 +13,15 @@ Plugin 'ctrlpvim/ctrlp.vim'
 
 " git
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-rhubarb'
 Plugin 'airblade/vim-gitgutter'
 
-" syntax highlighting
+" language specific
 Plugin 'vim-scripts/python.vim'
 Plugin 'guns/vim-clojure-static'
 Plugin 'vim-scripts/vim-niji'
-Plugin 'rodjek/vim-puppet'
-Plugin 'kevints/vim-aurora-syntax'
+Plugin 'fatih/vim-go'
+Plugin 'stephpy/vim-yaml'
 
 " indentation
 Plugin 'hynek/vim-python-pep8-indent'
@@ -37,7 +38,6 @@ Plugin 'endel/vim-github-colorscheme'
 Plugin 'google/vim-maktaba'
 Plugin 'google/vim-codefmt'
 Plugin 'google/vim-glaive'
-
 
 " end vundle plugin list
 call vundle#end()
@@ -72,6 +72,10 @@ let g:ctrlp_user_command = ['.git/', my_ctrlp_git_command, my_ctrlp_user_command
 " use powerline fonts (install from github.com/powerline/fonts)
 let g:airline_powerline_fonts = 1
 
+" syntastic settings
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_python_flake8_exec = 'python3'
+let g:syntastic_python_flake8_args = ['-m', 'flake8']
 
 "" --- Basic Settings ---
 
@@ -86,9 +90,7 @@ syntax on
 
 " colorscheme
 set t_Co=256
-colorscheme one
-set background=light
-let g:airline_theme='one'
+colorscheme jellybeans
 hi Normal ctermbg=none
 
 " turn on search highlighting
@@ -116,14 +118,9 @@ set autoindent
 " Remove all trailing whitespace
 autocmd BufWritePre <buffer> :%s/\s\+$//e
 
-" Set language specific settings
-au FileType python setl sw=4 sts=4 et cc=81
-au FileType java set sw=2 sts=2 noai et tw=100 cc=101
-
-" Auto-format settings. See: https://github.com/google/vim-codefmt for more
+" vim-codefmt settings
 augroup autoformat_settings
   autocmd FileType java AutoFormatBuffer google-java-format
-  "autocmd FileType python AutoFormatBuffer autopep8
   autocmd FileType python AutoFormatBuffer yapf
 augroup END
 
