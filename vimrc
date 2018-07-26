@@ -39,6 +39,10 @@ Plugin 'google/vim-maktaba'
 Plugin 'google/vim-codefmt'
 Plugin 'google/vim-glaive'
 
+" Tmux
+Plugin 'edkolev/tmuxline.vim'
+let g:tmuxline_preset = 'nightly_fox'
+
 " end vundle plugin list
 call vundle#end()
 
