@@ -52,4 +52,4 @@ alias qa="gcloud config set project oden-qa \
 	&& gcloud container clusters get-credentials services-1 --zone us-central1-a --project oden-qa"
 alias prod="gcloud config set project oden-production \
        && gcloud container clusters get-credentials services-1 --zone us-east1-d --project oden-production"
-alias cg="cd $HOME/go/src/github.com/OdenTech/"
+alias cg="cd $HOME/go/src/github.com/odentech/"
