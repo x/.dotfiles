@@ -24,3 +24,6 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 echo "installing vundle plugins..."
 vim +PluginInstall +qall
+
+# link OSX's bash_profile to the bashrc
+echo ". ~/.bashrc" > ~/.bash_profile

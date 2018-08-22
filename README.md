@@ -2,6 +2,7 @@
 
 1. ```cd ~ && git clone git@github.com:x/.dotfiles.git```
 2. ```cd ~/.dotfiles && ./install.sh```
+3. ```echo ". ~/.bashrc" > ~/.bash_profile```
 
 # Installing fancy fonts for vim-airline
 
@@ -16,10 +17,5 @@
 
 # Other stuff to brew-install
 ```
-brew intall \
-	git \                        # better than system git
-	bash \                       # better than system bash
-	bash-completion \            # exposes __git_ps1
-	tmux \                       # better than panes in iterm2
-	reattach-to-user-namespace \ # needed for system clipboard copy in tmux
+brew install git bash bash-completion tmux reattach-to-user-namespace
 ```
