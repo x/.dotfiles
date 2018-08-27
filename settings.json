@@ -1,0 +1,17 @@
+{
+    // Formatting
+    "editor.formatOnSave": true,
+    "json.format.enable": false,
+
+    // Theming
+    "workbench.colorTheme": "Jellybeans",
+
+    // Vim
+    "vim.insertModeKeyBindings": [
+        {"before": ["j", "j"], "after": ["<Esc>"]},
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {"before": ["<C-j>"], "after": ["5", "<C-e>"]},
+        {"before": ["<C-k>"], "after": ["5", "<C-y>"]},
+    ],
+}

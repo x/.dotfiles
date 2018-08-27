@@ -4,14 +4,15 @@ DIR=~/.dotfiles
 
 # install shit
 echo "linking..."
-ln -sF $DIR/bashrc    ~/.bashrc
-ln -sF $DIR/vimrc     ~/.vimrc
-ln -sF $DIR/tmux.conf ~/.tmux.conf
-ln -sF $DIR/gitconfig ~/.gitconfig
-ln -sF $DIR/xvimrc    ~/.xvimrc
-ln -sF $DIR/inputrc   ~/.inputrc
-ln -sF $DIR/hyper.js  ~/.hyper.js
-ln -sF $DIR/psqlrc    ~/.psqlrc
+ln -sF $DIR/bashrc        ~/.bashrc
+ln -sF $DIR/vimrc         ~/.vimrc
+ln -sF $DIR/tmux.conf     ~/.tmux.conf
+ln -sF $DIR/gitconfig     ~/.gitconfig
+ln -sF $DIR/xvimrc        ~/.xvimrc
+ln -sF $DIR/inputrc       ~/.inputrc
+ln -sF $DIR/hyper.js      ~/.hyper.js
+ln -sF $DIR/psqlrc        ~/.psqlrc
+ln -sF $DIR/settings.json ~/Library/Application\ Support/Code/User/settings.json
 
 # source bashrc
 echo "sourcing bashrc..."
