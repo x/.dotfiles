@@ -5,8 +5,10 @@ export PATH=$PATH:$HOME/go/bin
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
 # for gcloud
-. /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc
-. /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc
+if [ -f /usr/local/Caskroom/google-cloud-sdk/ ]; then
+	. /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc
+	. /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc
+fi
 
 export HISTSIZE=50000
 export HISTFILESIZE=50000
