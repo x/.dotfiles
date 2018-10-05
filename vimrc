@@ -119,6 +119,9 @@ set tabstop=4
 set shiftwidth=4
 set autoindent
 
+" SQL - soft 2-space tabs
+au FileType sql setl ts=2 sts=0 sw=2 et
+
 " Remove all trailing whitespace
 autocmd BufWritePre <buffer> :%s/\s\+$//e
 
