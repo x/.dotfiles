@@ -5,7 +5,7 @@ export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
 # for gcloud
-if [ -f /usr/local/Caskroom/google-cloud-sdk/ ]; then
+if [ -d /usr/local/Caskroom/google-cloud-sdk/ ]; then
 	. /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc
 	. /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc
 fi
@@ -39,12 +39,17 @@ alias tmux="tmux -2"
 # shortcuts for common tools
 alias v="vagrant"
 alias k="kubectl"
+alias p="ipython"
 
 # set up ssh-agent with my private key
 if [ -z "$SSH_AUTH_SOCK" ] ; then eval `ssh-agent -s` && ssh-add; fi
 
+# If using pyenv, it's helpful to always point the cloudsdk python to system and bypass the shimmed one
+export CLOUDSDK_PYTHON=/usr/bin/python
+
 # if installed, use pyenv python
 if command -v pyenv 1>/dev/null 2>&1; then eval "$(pyenv init -)"; fi
+if command -v pyenv-virtualenv 1>/dev/null 2>&1; then eval "$(pyenv virtualenv-init -)"; fi
 
 # docker aliases
 alias docker-kill-all="docker ps | tail -n +2 | cut -d ' ' -f 1 | xargs docker kill"
@@ -55,3 +60,8 @@ alias qa="gcloud config set project oden-qa \
 alias prod="gcloud config set project oden-production \
        && gcloud container clusters get-credentials services-1 --zone us-east1-d --project oden-production"
 alias cg="cd $HOME/go/src/github.com/odentech/"
+alias watchbuild="gcloud builds list --ongoing | head -2 | tail -1 | cut -d ' ' -f 1 | xargs -I{} gcloud builds log --stream {}"
+
+function pulljson {
+	gcloud beta pubsub subscriptions pull $@ --format="json(ackId, message.attributes, message.data.decode(\"base64\"), message.messageId, message.publishTime)" --limit 1000
+}

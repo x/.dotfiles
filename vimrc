@@ -38,6 +38,7 @@ Plugin 'endel/vim-github-colorscheme'
 Plugin 'google/vim-maktaba'
 Plugin 'google/vim-codefmt'
 Plugin 'google/vim-glaive'
+Plugin 'ambv/black'
 
 " Tmux
 Plugin 'edkolev/tmuxline.vim'
@@ -128,7 +129,7 @@ autocmd BufWritePre <buffer> :%s/\s\+$//e
 " vim-codefmt settings
 augroup autoformat_settings
   autocmd FileType java AutoFormatBuffer google-java-format
-  autocmd FileType python AutoFormatBuffer yapf
+  "autocmd FileType python AutoFormatBuffer black
 augroup END
 
 " turn on plugin indentation
