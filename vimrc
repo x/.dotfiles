@@ -96,6 +96,7 @@ syntax on
 " colorscheme
 set t_Co=256
 colorscheme jellybeans
+"colorscheme github
 hi Normal ctermbg=none
 
 " turn on search highlighting
@@ -129,6 +130,7 @@ autocmd BufWritePre <buffer> :%s/\s\+$//e
 " vim-codefmt settings
 augroup autoformat_settings
   autocmd FileType java AutoFormatBuffer google-java-format
+  autocmd FileType html,css,json AutoFormatBuffer js-beautify
   "autocmd FileType python AutoFormatBuffer black
 augroup END
 

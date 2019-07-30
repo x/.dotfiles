@@ -4,14 +4,17 @@ export PATH="$PATH:$HOME/go/bin"
 # for vscode
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
+# sbin
+export PATH="$PATH:/usr/local/sbin"
+
 # for gcloud
 if [ -d /usr/local/Caskroom/google-cloud-sdk/ ]; then
 	. /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc
 	. /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc
 fi
 
-export HISTSIZE=50000
-export HISTFILESIZE=50000
+export HISTSIZE=5000000
+export HISTFILESIZE=5000000
 export EDITOR=vim
 
 # git bash autocomplete
@@ -52,16 +55,19 @@ if command -v pyenv 1>/dev/null 2>&1; then eval "$(pyenv init -)"; fi
 if command -v pyenv-virtualenv 1>/dev/null 2>&1; then eval "$(pyenv virtualenv-init -)"; fi
 
 # docker aliases
-alias docker-kill-all="docker ps | tail -n +2 | cut -d ' ' -f 1 | xargs docker kill"
+alias docker-kill-all="docker kill $(docker ps -q)"
 
 # oden aliases
 alias qa="gcloud config set project oden-qa \
-	&& gcloud container clusters get-credentials services-1 --zone us-central1-a --project oden-qa"
+	&& gcloud container clusters get-credentials services-1 --zone us-east1-d --project oden-qa"
 alias prod="gcloud config set project oden-production \
        && gcloud container clusters get-credentials services-1 --zone us-east1-d --project oden-production"
 alias cg="cd $HOME/go/src/github.com/odentech/"
 alias watchbuild="gcloud builds list --ongoing | head -2 | tail -1 | cut -d ' ' -f 1 | xargs -I{} gcloud builds log --stream {}"
+alias gssh="gcloud alpha cloud-shell ssh"
+alias kf="sudo CLOUDSDK_PYTHON=/usr/bin/python kubefwd svc -n default"
+alias testsub="gcloud pubsub subscriptions create $(whoami)-test --topic=metrics --expiration-period=1d --message-retention-duration=1h"
 
-function pulljson {
-	gcloud beta pubsub subscriptions pull $@ --format="json(ackId, message.attributes, message.data.decode(\"base64\"), message.messageId, message.publishTime)" --limit 1000
+function logs {
+	kubectl get pods | grep $@ | cut -d ' ' -f 1 | xargs kubectl logs -f | jq -r '"\(.time[0:19]) \(.severity | ascii_upcase)\t\(.message)"'
 }
