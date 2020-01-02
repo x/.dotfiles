@@ -3,9 +3,6 @@
     "editor.formatOnSave": true,
     "json.format.enable": false,
 
-    // Theming
-    "workbench.colorTheme": "Jellybeans",
-
     // Vim
     "vim.insertModeKeyBindings": [
         {"before": ["j", "j"], "after": ["<Esc>"]},

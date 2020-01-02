@@ -82,6 +82,10 @@ let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_flake8_exec = 'python3'
 let g:syntastic_python_flake8_args = ['-m', 'flake8']
 
+" black settings
+let g:black_linelength = 100
+
+
 "" --- Basic Settings ---
 
 " vestigial
@@ -95,9 +99,19 @@ syntax on
 
 " colorscheme
 set t_Co=256
-colorscheme jellybeans
-"colorscheme github
-hi Normal ctermbg=none
+colorscheme one
+let g:airline_theme='one'
+
+" dark mode enabled?
+if system("defaults read -g AppleInterfaceStyle") =~ '^Dark'
+  set background=dark
+  "colorscheme jellybeans
+else
+  set background=light
+  "colorscheme github
+endif
+
+hi Normal guibg=NONE ctermbg=NONE
 
 " turn on search highlighting
 set hlsearch
@@ -131,7 +145,7 @@ autocmd BufWritePre <buffer> :%s/\s\+$//e
 augroup autoformat_settings
   autocmd FileType java AutoFormatBuffer google-java-format
   autocmd FileType html,css,json AutoFormatBuffer js-beautify
-  "autocmd FileType python AutoFormatBuffer black
+  autocmd FileType python AutoFormatBuffer Black
 augroup END
 
 " turn on plugin indentation

@@ -7,6 +7,9 @@ export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/b
 # sbin
 export PATH="$PATH:/usr/local/sbin"
 
+# temporary hack for terraform
+export PATH="/usr/local/opt/terraform@0.11/bin:$PATH"
+
 # for gcloud
 if [ -d /usr/local/Caskroom/google-cloud-sdk/ ]; then
 	. /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc
@@ -34,7 +37,7 @@ function odenGCPProject {
 	fi
 }
 
-export PS1="\$(odenGCPProject) \$(shortDirs)\$(__git_ps1) ● "
+export PS1="\$(odenGCPProject) \$(shortDirs)\$(__git_ps1) 🔥 "
 
 # 256 colors in tmux
 alias tmux="tmux -2"
@@ -47,8 +50,7 @@ alias p="ipython"
 # set up ssh-agent with my private key
 if [ -z "$SSH_AUTH_SOCK" ] ; then eval `ssh-agent -s` && ssh-add; fi
 
-# If using pyenv, it's helpful to always point the cloudsdk python to system and bypass the shimmed one
-export CLOUDSDK_PYTHON=/usr/bin/python
+export CLOUDSDK_PYTHON=/Users/devon/.pyenv/shims/python3
 
 # if installed, use pyenv python
 if command -v pyenv 1>/dev/null 2>&1; then eval "$(pyenv init -)"; fi
@@ -59,15 +61,25 @@ alias docker-kill-all="docker kill $(docker ps -q)"
 
 # oden aliases
 alias qa="gcloud config set project oden-qa \
-	&& gcloud container clusters get-credentials services-1 --zone us-east1-d --project oden-qa"
+	&& gcloud container clusters get-credentials services-1 --zone us-east1 --project oden-qa"
 alias prod="gcloud config set project oden-production \
        && gcloud container clusters get-credentials services-1 --zone us-east1-d --project oden-production"
 alias cg="cd $HOME/go/src/github.com/odentech/"
 alias watchbuild="gcloud builds list --ongoing | head -2 | tail -1 | cut -d ' ' -f 1 | xargs -I{} gcloud builds log --stream {}"
 alias gssh="gcloud alpha cloud-shell ssh"
 alias kf="sudo CLOUDSDK_PYTHON=/usr/bin/python kubefwd svc -n default"
-alias testsub="gcloud pubsub subscriptions create $(whoami)-test --topic=metrics --expiration-period=1d --message-retention-duration=1h"
+alias g="gcloud"
 
-function logs {
-	kubectl get pods | grep $@ | cut -d ' ' -f 1 | xargs kubectl logs -f | jq -r '"\(.time[0:19]) \(.severity | ascii_upcase)\t\(.message)"'
+function mktestsub {
+	gcloud pubsub subscriptions create $(whoami)-test-${1} --topic=$1 --expiration-period=1d --message-retention-duration=1h
+}
+
+function rmtestsub {
+	gcloud pubsub subscriptions delete $(whoami)-test-${1}
+}
+
+function pull {
+	while True; do
+		gcloud pubsub subscriptions pull ${1} --limit=100000 | cut -d ' ' -f 2 | grep {
+	done
 }
