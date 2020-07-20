@@ -22,6 +22,8 @@ Plugin 'guns/vim-clojure-static'
 Plugin 'vim-scripts/vim-niji'
 Plugin 'fatih/vim-go'
 Plugin 'stephpy/vim-yaml'
+Plugin 'cespare/vim-toml'
+Plugin 'jparise/vim-graphql'
 
 " indentation
 Plugin 'hynek/vim-python-pep8-indent'
@@ -33,12 +35,14 @@ Plugin 'scrooloose/syntastic'
 Plugin 'rakr/vim-one'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'endel/vim-github-colorscheme'
+Plugin 'crusoexia/vim-dracula'
 
 " Autoformat
 Plugin 'google/vim-maktaba'
 Plugin 'google/vim-codefmt'
 Plugin 'google/vim-glaive'
-Plugin 'ambv/black'
+Plugin 'psf/black'
+Plugin 'fisadev/vim-isort'
 
 " Tmux
 Plugin 'edkolev/tmuxline.vim'
@@ -82,10 +86,6 @@ let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_flake8_exec = 'python3'
 let g:syntastic_python_flake8_args = ['-m', 'flake8']
 
-" black settings
-let g:black_linelength = 100
-
-
 "" --- Basic Settings ---
 
 " vestigial
@@ -104,14 +104,19 @@ let g:airline_theme='one'
 
 " dark mode enabled?
 if system("defaults read -g AppleInterfaceStyle") =~ '^Dark'
-  set background=dark
-  "colorscheme jellybeans
+  colorscheme dracula "jellybeans
 else
-  set background=light
-  "colorscheme github
+  set background=light "github
 endif
 
+" Don't use the color scheme's bg color
 hi Normal guibg=NONE ctermbg=NONE
+
+" Enable italics coments
+let &t_ZH="\e[3m"
+let &t_ZR="\e[23m"
+highlight Comment cterm=italic gui=italic
+let g:dracula_italic = 1
 
 " turn on search highlighting
 set hlsearch
@@ -145,7 +150,7 @@ autocmd BufWritePre <buffer> :%s/\s\+$//e
 augroup autoformat_settings
   autocmd FileType java AutoFormatBuffer google-java-format
   autocmd FileType html,css,json AutoFormatBuffer js-beautify
-  autocmd FileType python AutoFormatBuffer Black
+  autocmd BufWritePre *.py execute ':Black'
 augroup END
 
 " turn on plugin indentation

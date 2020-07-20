@@ -4,9 +4,9 @@
 [color]
 	ui = true
 [color "status"]
-	added = green
-	changed = yellow
-	untracked = cyan
+	added = bold
+	changed = normal
+	untracked = dim
 [diff]
 	tool = vimdiff
 [alias]
@@ -18,3 +18,8 @@
 	default = current
 [web]
 	browser = open
+[branch]
+	autosetuprebase = always
+[pull]
+	rebase = true
+	default = current
