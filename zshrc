@@ -40,12 +40,22 @@ function gcpProject {
 	fi
 }
 
-function getPS1 {
+function branch {
  	ref=$(git symbolic-ref HEAD 2>/dev/null | cut -d'/' -f3)
-	echo -e "$(gcpProject) $(shortDirs)$ref 🔥 "
+	if [ -z "$ref" ]; then
+		echo -n ""
+	else
+		echo -n " ($ref)"
+	fi
 }
 
-export PS1="$(getPS1)"
+function getPS1 {
+ 	ref=$(git symbolic-ref HEAD 2>/dev/null | cut -d'/' -f3)
+	echo -e "$(gcpProject) $(shortDirs)$(branch) 🔥 "
+}
+
+setopt PROMPT_SUBST
+export PS1="\$(getPS1)"
 
 # 256 colors in tmux
 alias tmux="tmux -2"
