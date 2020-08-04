@@ -82,9 +82,14 @@ let g:ctrlp_user_command = ['.git/', my_ctrlp_git_command, my_ctrlp_user_command
 let g:airline_powerline_fonts = 1
 
 " syntastic settings
-let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_python_flake8_exec = 'python3'
-let g:syntastic_python_flake8_args = ['-m', 'flake8']
+let g:syntastic_python_checkers = ['pylint', 'mypy']
+
+"" -- When I'm in a poetry project --
+if filereadable("./poetry.lock")
+	let g:systastic_python_pylint_exec = "poetry run pylint"
+	let g:systastic_python_mypy_exec = "poetry run mypy"
+	let g:black_virtualenv = fnamemodify('.venv', ':p')
+endif
 
 "" --- Basic Settings ---
 
