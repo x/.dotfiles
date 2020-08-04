@@ -4,7 +4,7 @@ DIR=~/.dotfiles
 
 # install shit
 echo "linking..."
-ln -sF $DIR/bash_profile  ~/.bash_profile
+ln -sF $DIR/zshrc         ~/.zshrc
 ln -sF $DIR/vimrc         ~/.vimrc
 ln -sF $DIR/tmux.conf     ~/.tmux.conf
 ln -sF $DIR/gitconfig     ~/.gitconfig
@@ -15,8 +15,8 @@ ln -sF $DIR/psqlrc        ~/.psqlrc
 ln -sF $DIR/settings.json ~/Library/Application\ Support/Code/User/settings.json
 
 # source bashrc
-echo "sourcing bash_profile..."
-source ~/.bash_profile
+echo "sourcing zshrc..."
+source ~/.zshrc
 
 # install Vundle and plugins
 echo "cloning vundle..."

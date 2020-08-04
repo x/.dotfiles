@@ -7,21 +7,32 @@ export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/b
 # sbin
 export PATH="$PATH:/usr/local/sbin"
 
-# temporary hack for terraform
-export PATH="/usr/local/opt/terraform@0.11/bin:$PATH"
-
 # for jenv
 export PATH="$HOME/.jenv/bin:$PATH"
 
+# Fix ctrl-r in zsh
+bindkey "^R" history-incremental-pattern-search-backward
+
+# Fix ctrl-x-e in zsh
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^xe' edit-command-line
+bindkey '^x^e' edit-command-line
+
+# Set history size to something large
 export HISTSIZE=5000000
 export HISTFILESIZE=5000000
+export HISTFILE=~/.zsh_history
+
+# Set the default editor to vim
 export EDITOR=vim
 
+# Set the PS1
 function shortDirs {
 	echo -n "$(dirs | perl -F/ -ane 'print join( "/", map { $i++ < @F - 1 ?  substr $_,0,1 : $_ } @F)')"
 }
 
-function odenGCPProject {
+function gcpProject {
 	if [ -f ~/.config/gcloud/active_config ]; then
 		local project=$(cat ~/.config/gcloud/active_config | xargs -I{} grep project ~/.config/gcloud/configurations/config_{} | cut -d ' ' -f 3)
 		local project=$(echo $project | sed -e 's/^oden-//')  # cut the "oden-" prefix
@@ -31,7 +42,7 @@ function odenGCPProject {
 
 function getPS1 {
  	ref=$(git symbolic-ref HEAD 2>/dev/null | cut -d'/' -f3)
-	echo -e "$(odenGCPProject) $(shortDirs)$ref 🔥 "
+	echo -e "$(gcpProject) $(shortDirs)$ref 🔥 "
 }
 
 export PS1="$(getPS1)"
@@ -58,15 +69,12 @@ if command -v pyenv-virtualenv 1>/dev/null 2>&1; then eval "$(pyenv virtualenv-i
 # if installed, use jenv for java
 if command -v jenv 1>/dev/null 2>&1; then eval "$(jenv init -)"; fi
 
-# oden aliases
+# A couple more aliases for gcp
 alias personal="gcloud config set project fluted-current-229319"
 alias gssh="gcloud alpha cloud-shell ssh"
 alias g="gcloud"
 
-# Oden env stuff
-source ~/src/dotfiles/base/env
-
-# Custom functions
+# Custom functions for working with gcp
 function dall {
 	docker $@ $(docker ps -q)
 }
