@@ -32,16 +32,8 @@ function shortDirs {
 	echo -n "$(dirs | perl -F/ -ane 'print join( "/", map { $i++ < @F - 1 ?  substr $_,0,1 : $_ } @F)')"
 }
 
-function gcpProject {
-	if [ -f ~/.config/gcloud/active_config ]; then
-		local project=$(cat ~/.config/gcloud/active_config | xargs -I{} grep project ~/.config/gcloud/configurations/config_{} | cut -d ' ' -f 3)
-		local project=$(echo $project | sed -e 's/^oden-//')  # cut the "oden-" prefix
-		echo -n "[$project]"
-	fi
-}
-
 function branch {
- 	ref=$(git symbolic-ref HEAD 2>/dev/null | cut -d'/' -f3)
+ 	ref=$(git symbolic-ref HEAD 2>/dev/null | sed 's/refs\/heads\///g')
 	if [ -z "$ref" ]; then
 		echo -n ""
 	else
@@ -51,7 +43,7 @@ function branch {
 
 function getPS1 {
  	ref=$(git symbolic-ref HEAD 2>/dev/null | cut -d'/' -f3)
-	echo -e "$(gcpProject) $(shortDirs)$(branch) 🔥 "
+	echo -e "[${CLOUDSDK_ACTIVE_CONFIG_NAME}] $(shortDirs)$(branch) 🔥 "
 }
 
 setopt PROMPT_SUBST
