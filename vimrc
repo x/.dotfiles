@@ -28,9 +28,6 @@ Plugin 'jparise/vim-graphql'
 " indentation
 Plugin 'hynek/vim-python-pep8-indent'
 
-" syntax checking
-Plugin 'scrooloose/syntastic'
-
 " color
 Plugin 'rakr/vim-one'
 Plugin 'nanotech/jellybeans.vim'
@@ -80,16 +77,6 @@ let g:ctrlp_user_command = ['.git/', my_ctrlp_git_command, my_ctrlp_user_command
 
 " use powerline fonts (install from github.com/powerline/fonts)
 let g:airline_powerline_fonts = 1
-
-" syntastic settings
-let g:syntastic_python_checkers = ['pylint', 'mypy']
-
-"" -- When I'm in a poetry project --
-if filereadable("./poetry.lock")
-	let g:systastic_python_pylint_exec = "poetry run pylint"
-	let g:systastic_python_mypy_exec = "poetry run mypy"
-	let g:black_virtualenv = fnamemodify('.venv', ':p')
-endif
 
 "" --- Basic Settings ---
 
@@ -148,6 +135,9 @@ set autoindent
 " SQL - soft 2-space tabs
 au FileType sql setl ts=2 sts=0 sw=2 et
 
+au FileType sh setl ts=2 sw=2 ts=2 et
+au FileType javascript setl ts=2 sw=2 ts=2 et
+
 " Remove all trailing whitespace
 autocmd BufWritePre <buffer> :%s/\s\+$//e
 
@@ -155,7 +145,6 @@ autocmd BufWritePre <buffer> :%s/\s\+$//e
 augroup autoformat_settings
   autocmd FileType java AutoFormatBuffer google-java-format
   autocmd FileType html,css,json AutoFormatBuffer js-beautify
-  autocmd BufWritePre *.py execute ':Black'
 augroup END
 
 " turn on plugin indentation

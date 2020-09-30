@@ -20,9 +20,13 @@ bindkey '^xe' edit-command-line
 bindkey '^x^e' edit-command-line
 
 # Set history size to something large
+export SAVEHIST=5000000
 export HISTSIZE=5000000
 export HISTFILESIZE=5000000
 export HISTFILE=~/.zsh_history
+
+# Make sure history updates between tmux panes
+export PROMPT_COMMAND="history -a; history -n"
 
 # Set the default editor to vim
 export EDITOR=vim
@@ -33,7 +37,7 @@ function shortDirs {
 }
 
 function branch {
- 	ref=$(git symbolic-ref HEAD 2>/dev/null | sed 's/refs\/heads\///g')
+	ref=$(git symbolic-ref HEAD 2>/dev/null | sed 's/refs\/heads\///g')
 	if [ -z "$ref" ]; then
 		echo -n ""
 	else
@@ -64,10 +68,6 @@ if [ -z "$SSH_AUTH_SOCK" ] ; then eval `ssh-agent -s` && ssh-add; fi
 
 export CLOUDSDK_PYTHON=/Users/devon/.pyenv/shims/python3
 
-# if installed, use pyenv python
-if command -v pyenv 1>/dev/null 2>&1; then eval "$(pyenv init -)"; fi
-if command -v pyenv-virtualenv 1>/dev/null 2>&1; then eval "$(pyenv virtualenv-init -)"; fi
-
 # if installed, use jenv for java
 if command -v jenv 1>/dev/null 2>&1; then eval "$(jenv init -)"; fi
 
@@ -82,7 +82,7 @@ function dall {
 }
 
 function mktestsub {
-	gcloud pubsub subscriptions create $(whoami)-test-${1} --topic=$1 --expiration-period=1d --message-retention-duration=30m
+	gcloud pubsub subscriptions create $(whoami)-test-${1} --topic=$1 --expiration-period=7d --message-retention-duration=1d
 }
 
 function rmtestsub {
