@@ -94,3 +94,26 @@ function pull {
 		gcloud pubsub subscriptions pull ${1} --limit=100000 | cut -d ' ' -f 2 | grep {
 	done
 }
+
+function podlogs {
+	gcloud logging read resource.labels.pod_name=${1} --format='value(jsonPayload.message)'
+}
+
+function whiletrue {
+	while true; do bash -c "$@"; done
+}
+
+function ifdiff {
+	lastline=""
+	while read line; do
+		if [[ "${line}" != "${lastline}" ]]; then
+			echo $line
+		fi
+		lastline="${line}"
+	done
+}
+
+function notify {
+	local INPUT="$([[ -p /dev/stdin ]] && cat - || echo "$@")"
+	osascript -e "display notification \"$INPUT\" with title \"notify\" sound name \"Submarine\""
+}

@@ -102,7 +102,7 @@ else
 endif
 
 " Don't use the color scheme's bg color
-hi Normal guibg=NONE ctermbg=NONE
+"hi Normal guibg=NONE ctermbg=NONE
 
 " Enable italics coments
 let &t_ZH="\e[3m"
@@ -132,20 +132,16 @@ set tabstop=4
 set shiftwidth=4
 set autoindent
 
-" SQL - soft 2-space tabs
+" Override default tab settings
 au FileType sql setl ts=2 sts=0 sw=2 et
-
 au FileType sh setl ts=2 sw=2 ts=2 et
 au FileType javascript setl ts=2 sw=2 ts=2 et
 
 " Remove all trailing whitespace
 autocmd BufWritePre <buffer> :%s/\s\+$//e
 
-" vim-codefmt settings
-augroup autoformat_settings
-  autocmd FileType java AutoFormatBuffer google-java-format
-  autocmd FileType html,css,json AutoFormatBuffer js-beautify
-augroup END
+" Python formatting settings
+autocmd BufWritePost *.py silent! execute ':Black'
 
 " turn on plugin indentation
 filetype plugin indent on
