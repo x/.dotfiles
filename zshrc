@@ -25,6 +25,9 @@ export HISTSIZE=5000000
 export HISTFILESIZE=5000000
 export HISTFILE=~/.zsh_history
 
+# Use fzf for history
+FZF_CTRL_R_OPTS='--height=100% --layout=default --border=rounded --info=hidden --color fg:188,hl:103,fg+:222,bg+:234,hl+:104'
+
 # Make sure history updates between tmux panes
 export PROMPT_COMMAND="history -a; history -n"
 
@@ -114,6 +117,9 @@ function ifdiff {
 }
 
 function notify {
-	local INPUT="$([[ -p /dev/stdin ]] && cat - || echo "$@")"
-	osascript -e "display notification \"$INPUT\" with title \"notify\" sound name \"Submarine\""
+	while read line; do
+		osascript -e "display notification \"$line\" with title \"notify\" sound name \"Submarine\""
+	done
+	#local INPUT="$([[ -p /dev/stdin ]] && cat - || echo "$@")"
+	#osascript -e "display notification \"$INPUT\" with title \"notify\" sound name \"Submarine\""
 }

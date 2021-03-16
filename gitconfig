@@ -11,6 +11,9 @@
 	tool = vimdiff
 [alias]
 	co = checkout
+	cb = "!f() {\
+		git checkout $(git branch | fzf);\
+	}; f"
 	s = status
 	l = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	r = rebase --interactive origin/HEAD
