@@ -53,9 +53,9 @@ function getPS1 {
 
 	# Add Python venv if in a virtual env
 	if [ "${VIRTUAL_ENV}" ]; then
-    	_VENV="$(basename "${VIRTUAL_ENV}")"
-	  	_ENV="$_ENV|$_VENV"
-    fi
+		_VENV="$(basename "${VIRTUAL_ENV}")"
+		_ENV="$_ENV|$_VENV"
+	fi
 
 	_PS1="[$_ENV] $(shortDirs)"
 
@@ -85,7 +85,7 @@ alias p="poetry run ipython"
 if command -v mvim 1>/dev/null 2>&1; then alias vim='mvim -v'; fi
 
 # setup ssh-agent with my private key
-if [ -z "$SSH_AUTH_SOCK" ] ; then eval `ssh-agent -s` && ssh-add; fi
+if [ -z "$SSH_AUTH_SOCK" ]; then eval $(ssh-agent -s) && ssh-add; fi
 
 export CLOUDSDK_PYTHON=/Users/devon/.pyenv/shims/python3
 
