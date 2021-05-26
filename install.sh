@@ -1,22 +1,21 @@
-#!/bin/bash
+#!/bin/bash -ex
 
 DIR=~/.dotfiles
+_ZSHRC_LOCATION=${ZSHRC_LOCATION:-~/.zshrc}
 
 # install shit
 echo "linking..."
-ln -sF $DIR/zshrc         ~/.zshrc
+ln -sF $DIR/zshrc         $_ZSHRC_LOCATION
 ln -sF $DIR/vimrc         ~/.vimrc
 ln -sF $DIR/tmux.conf     ~/.tmux.conf
 ln -sF $DIR/gitconfig     ~/.gitconfig
 ln -sF $DIR/xvimrc        ~/.xvimrc
 ln -sF $DIR/inputrc       ~/.inputrc
-ln -sF $DIR/hyper.js      ~/.hyper.js
 ln -sF $DIR/psqlrc        ~/.psqlrc
-ln -sF $DIR/settings.json ~/Library/Application\ Support/Code/User/settings.json
 
 # source bashrc
 echo "sourcing zshrc..."
-source ~/.zshrc
+source $_ZSHRC_LOCATION
 
 # install Vundle and plugins
 echo "cloning vundle..."

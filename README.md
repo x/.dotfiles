@@ -10,7 +10,7 @@
 2. ```cd ~/.powerline_fonts && ./install.sh```
 
 # Setting up fonts
-```brew tap caskroom/fonts && brew cask install font-fira-code```
+```brew tap homebrew/cask-fonts && brew install font-fira-code```
 
 # Using macvim instead of system vim (needs full XCode install)
 ```brew install macvim --override-system-vim```

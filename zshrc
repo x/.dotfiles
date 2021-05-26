@@ -5,7 +5,7 @@ export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
 # sbin
-export PATH="$PATH:/usr/local/sbin"
+#export PATH="$PATH:/usr/local/sbin"
 
 # for jenv
 export PATH="$HOME/.jenv/bin:$PATH"
@@ -49,8 +49,26 @@ function branch {
 }
 
 function getPS1 {
- 	ref=$(git symbolic-ref HEAD 2>/dev/null | cut -d'/' -f3)
-	echo -e "[${CLOUDSDK_ACTIVE_CONFIG_NAME}] $(shortDirs)$(branch) 🔥 "
+	_ENV="${CLOUDSDK_ACTIVE_CONFIG_NAME}"
+
+	# Add Python venv if in a virtual env
+	if [ "${VIRTUAL_ENV}" ]; then
+    	_VENV="$(basename "${VIRTUAL_ENV}")"
+	  	_ENV="$_ENV|$_VENV"
+    fi
+
+	_PS1="[$_ENV] $(shortDirs)"
+
+	# Add git if in a git repo
+	_REF=$(git symbolic-ref HEAD 2>/dev/null | sed 's/refs\/heads\///g')
+	if [ "$_REF" ]; then
+		_PS1="$_PS1 ($_REF)"
+	fi
+
+	# Add closing char
+	_PS1="$_PS1 $ "
+
+	echo -e "$_PS1"
 }
 
 setopt PROMPT_SUBST
@@ -78,6 +96,7 @@ if command -v jenv 1>/dev/null 2>&1; then eval "$(jenv init -)"; fi
 alias personal="gcloud config set project fluted-current-229319"
 alias gssh="gcloud alpha cloud-shell ssh"
 alias g="gcloud"
+alias code="code-insiders"
 
 # Custom functions for working with gcp
 function dall {
