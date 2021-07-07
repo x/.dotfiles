@@ -41,6 +41,9 @@ Plugin 'google/vim-glaive'
 Plugin 'psf/black'
 Plugin 'fisadev/vim-isort'
 
+" Wiki
+Plugin 'vimwiki/vimwiki'
+
 " Tmux
 Plugin 'edkolev/tmuxline.vim'
 let g:tmuxline_preset = 'nightly_fox'
@@ -77,6 +80,10 @@ let g:ctrlp_user_command = ['.git/', my_ctrlp_git_command, my_ctrlp_user_command
 
 " use powerline fonts (install from github.com/powerline/fonts)
 let g:airline_powerline_fonts = 1
+
+" Vimwiki settings
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
 
 "" --- Basic Settings ---
 
@@ -136,12 +143,13 @@ set autoindent
 au FileType sql setl ts=2 sts=0 sw=2 et
 au FileType sh setl ts=2 sw=2 ts=2 et
 au FileType javascript setl ts=2 sw=2 ts=2 et
+au FileType markdown set wrap linebreak
 
 " Remove all trailing whitespace
 autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 " Python formatting settings
-autocmd BufWritePost *.py silent! execute ':Black'
+"autocmd BufWritePost *.py silent! execute ':Black'
 
 " turn on plugin indentation
 filetype plugin indent on

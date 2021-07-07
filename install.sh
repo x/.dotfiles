@@ -3,19 +3,19 @@
 DIR=~/.dotfiles
 _ZSHRC_LOCATION=${ZSHRC_LOCATION:-~/.zshrc}
 
+# Make a ~/.config dir if it doesn't already exist
+mkdir -p ~/.config
+
 # install shit
 echo "linking..."
 ln -sF $DIR/zshrc         $_ZSHRC_LOCATION
 ln -sF $DIR/vimrc         ~/.vimrc
+ln -sF $DIR/config/nvim   ~/.config/nvim
 ln -sF $DIR/tmux.conf     ~/.tmux.conf
 ln -sF $DIR/gitconfig     ~/.gitconfig
 ln -sF $DIR/xvimrc        ~/.xvimrc
 ln -sF $DIR/inputrc       ~/.inputrc
 ln -sF $DIR/psqlrc        ~/.psqlrc
-
-# source bashrc
-echo "sourcing zshrc..."
-source $_ZSHRC_LOCATION
 
 # install Vundle and plugins
 echo "cloning vundle..."

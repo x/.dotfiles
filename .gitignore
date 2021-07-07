@@ -2,8 +2,6 @@
 *.sw[a-z]
 *.netrwhist
 *~
-backups
-custom.vim
 
-vim/bundle/*
-!vim/bundle/vundle
+config/nvim/*
+!config/nvim/init.vim
