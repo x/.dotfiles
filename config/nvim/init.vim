@@ -43,6 +43,9 @@ Plug 'ludovicchabant/vim-gutentags'
 " Toml Syntax
 Plug 'cespare/vim-toml'
 
+" Chrome NeoVim Support
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+
 call plug#end()
 
 " Wildcard ignore
@@ -69,9 +72,10 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 0
 let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_aggregate_errors = 1
+let g:syntastic_mode_map = {"mode": "passive"}
 
 let g:syntastic_python_checkers = ['flake8', 'mypy']
 
