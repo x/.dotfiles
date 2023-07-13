@@ -1,0 +1,4 @@
+imap jj <Esc>
+nnoremap <c-j> 5<c-e>
+nnoremap <c-k> 5<c-y>
+set ideajoin

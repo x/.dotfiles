@@ -1,66 +1,111 @@
 "" --- Plugins (managed by Vundle) ---
 
-" start vundle
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-" vundle managest itself
-Plugin 'gmarik/Vundle.vim'
+Plugin 'gmarik/Vundle.vim'       " Let vundle manage itself
+Plugin 'vim-airline/vim-airline' " Decoration
+Plugin 'ctrlpvim/ctrlp.vim'      " Fuzzy search
+Plugin 'tpope/vim-fugitive'      " Standard git commands
+Plugin 'tpope/vim-rhubarb'       " Just the gbrowse command
+Plugin 'airblade/vim-gitgutter'  " See diffs
 
-" decoration
-Plugin 'vim-airline/vim-airline'
-Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'rakr/vim-one'            " Theme
+Plugin 'crusoexia/vim-dracula'   " Theme
 
-" git
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-rhubarb'
-Plugin 'airblade/vim-gitgutter'
+Plugin 'vim-scripts/python.vim'  " Python
+Plugin 'guns/vim-clojure-static' " Clojure
+Plugin 'fatih/vim-go'            " Go
+Plugin 'stephpy/vim-yaml'        " Yaml
+Plugin 'cespare/vim-toml'        " Toml
+Plugin 'jparise/vim-graphql'     " GraphQL
+Plugin 'hashivim/vim-terraform'  " Terraform
 
-" language specific
-Plugin 'vim-scripts/python.vim'
-Plugin 'guns/vim-clojure-static'
-Plugin 'vim-scripts/vim-niji'
-Plugin 'fatih/vim-go'
-Plugin 'stephpy/vim-yaml'
-Plugin 'cespare/vim-toml'
-Plugin 'jparise/vim-graphql'
+Plugin 'dense-analysis/ale'      " Linter and formatter
 
-" indentation
-Plugin 'hynek/vim-python-pep8-indent'
-
-" color
-Plugin 'rakr/vim-one'
-Plugin 'nanotech/jellybeans.vim'
-Plugin 'endel/vim-github-colorscheme'
-Plugin 'crusoexia/vim-dracula'
-
-" Autoformat
-Plugin 'google/vim-maktaba'
-Plugin 'google/vim-codefmt'
-Plugin 'google/vim-glaive'
-Plugin 'psf/black'
-"Plugin 'fisadev/vim-isort'
-
-" Wiki
-Plugin 'vimwiki/vimwiki'
-
-" Tmux
-Plugin 'edkolev/tmuxline.vim'
-let g:tmuxline_preset = 'nightly_fox'
-
-" end vundle plugin list
 call vundle#end()
 
 
-"" --- Plugin Settings ---
+"" --- Basic Settings ---
 
-" Google Java Formatting
-call glaive#Install()
+set nocompatible      " required
+filetype off          " required
+syntax on             " syntax highlighting on
+set clipboard=unnamed " use system clipboard
+set hlsearch          " turn on search highlighting
+set laststatus=2      " turn on status bar
+set number            " show line numbers
 
-" gitgutter settings
-highlight clear SignColumn
 
-" ctrl+p settings
+"" --- Keybindings ---
+
+imap jj <Esc>
+nnoremap <c-j> 5<c-e>
+nnoremap <c-k> 5<c-y>
+set pastetoggle=<F2>
+
+
+"" --- Theme ---
+
+" Hack to fix the git-gutter background behavior
+autocmd ColorScheme * highlight! link SignColumn LineNr
+
+set t_Co=256
+set background=dark
+colorscheme dracula
+let g:airline_theme='one'
+hi Normal guibg=NONE ctermbg=NONE
+
+" Enable italics for comments
+let &t_ZH="\e[3m"
+let &t_ZR="\e[23m"
+highlight Comment cterm=italic gui=italic
+let g:dracula_italic = 3
+
+" Plugin Theme Settings
+highlight clear SignColumn        " Setup gitgutter
+let g:airline_powerline_fonts = 1 " Fancy powerline fonts
+
+
+""" --- Indent Rules ---
+
+set nocindent
+set nosmartindent
+set tabstop=4
+set shiftwidth=4
+set autoindent
+
+au FileType py setl ts=4 sts=4 sw=4 tw=100 et
+au FileType sql setl ts=2 sts=0 sw=2 et
+au FileType sh setl ts=2 sw=2 ts=2 et
+au FileType javascript setl ts=2 sw=2 ts=2 et
+au FileType markdown set wrap linebreak
+au FileType tf setl ts=2 sts=0 sw=2 et
+
+" Allow plugins to override
+filetype plugin indent on
+
+
+"" --- Language Server Settings ---
+
+let g:ale_fix_on_save = 1         " Run fixers on save
+let g:ale_python_auto_poetry = 1  " Enable poetry for python
+
+
+let g:ale_linters = {
+\	"python": ["ruff", "mypy"]
+\	"bash": ["shellcheck"],
+\	"terraform": ["terraform", "tflint"]
+\}
+let g:ale_fixers = {
+\	"*": ["remove_trailing_lines"],
+\	"python": ["black", "ruff"],
+\	"bash": ["shfmt"]
+\}
+
+
+"" --- Ctrl-P Settings ---
+
 let ctrlp_filter_greps = "".
     \ "egrep -iv '\\.(" .
     \ "jar|class|swp|swo|log|so|o|pyc|jpe?g|png|gif|mo|po" .
@@ -77,77 +122,3 @@ if has("unix")
     \ ctrlp_filter_greps
 endif
 let g:ctrlp_user_command = ['.git/', my_ctrlp_git_command, my_ctrlp_user_command]
-
-" use powerline fonts (install from github.com/powerline/fonts)
-let g:airline_powerline_fonts = 1
-
-" Vimwiki settings
-let g:vimwiki_list = [{'path': '~/vimwiki/',
-                      \ 'syntax': 'markdown', 'ext': '.md'}]
-
-"" --- Basic Settings ---
-
-" vestigial
-set nocompatible
-
-" use system clipboard
-set clipboard=unnamed
-
-" syntax highlighting on
-syntax on
-
-" Workaround for GitGutter to match colorscheme (BEFORE)
-autocmd ColorScheme * highlight! link SignColumn LineNr
-
-" colorscheme
-set t_Co=256
-set background=dark
-colorscheme dracula
-let g:airline_theme='one'
-
-" Don't use the color scheme's bg color
-hi Normal guibg=NONE ctermbg=NONE
-
-" Enable italics coments
-let &t_ZH="\e[3m"
-let &t_ZR="\e[23m"
-highlight Comment cterm=italic gui=italic
-let g:dracula_italic = 3
-
-" turn on search highlighting
-set hlsearch
-
-" turn on status bar
-set laststatus=2
-
-" show line numbers
-set number
-
-" things my fingers have memorized
-imap jj <Esc>
-nnoremap <c-j> 5<c-e>
-nnoremap <c-k> 5<c-y>
-set pastetoggle=<F2>
-
-" Set default indentation rules
-set nocindent
-set nosmartindent
-set tabstop=4
-set shiftwidth=4
-set autoindent
-
-" Override default tab settings
-au FileType sql setl ts=2 sts=0 sw=2 et
-au FileType sh setl ts=2 sw=2 ts=2 et
-au FileType javascript setl ts=2 sw=2 ts=2 et
-au FileType markdown set wrap linebreak
-au FileType tf setl ts=2 sts=0 sw=2 et
-
-" Remove all trailing whitespace
-autocmd BufWritePre <buffer> :%s/\s\+$//e
-
-" Python formatting settings
-"autocmd BufWritePost *.py silent! execute ':Black'
-
-" turn on plugin indentation
-filetype plugin indent on
