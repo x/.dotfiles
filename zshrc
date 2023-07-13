@@ -1,3 +1,8 @@
+# If not calling this from the Oden Profile, source the Oden Profile
+if [ "${BASH_SOURCE[0]}" = "" ]; then
+	. ~/.oden_profile
+fi
+
 # for go
 export PATH="$PATH:$HOME/go/bin"
 
@@ -108,16 +113,32 @@ alias v="vim"
 # setup ssh-agent with my private key
 if [ -z "$SSH_AUTH_SOCK" ]; then eval $(ssh-agent -s) && ssh-add; fi
 
-export CLOUDSDK_PYTHON=/Users/devon/.pyenv/shims/python3
+#export CLOUDSDK_PYTHON=/Users/devon/.pyenv/shims/python3
 
 # if installed, use jenv for java
-if command -v jenv 1>/dev/null 2>&1; then eval "$(jenv init -)"; fi
+if command -v jenv 1>/dev/null 3>&1; then eval "$(jenv init -)"; fi
 
 # A couple more aliases for gcp
 alias personal="gcloud config set project fluted-current-229319"
 alias gssh="gcloud alpha cloud-shell ssh"
 alias g="gcloud"
 alias code="code-insiders"
+
+# Personal GCP
+function personal_gcp(){
+  log info "Connecting to personal project fluted-current-229319"
+  export CLOUDSDK_ACTIVE_CONFIG_NAME=qa \
+    && export SERVER_ENV=personal \
+    && export PROJECT_ID=fluted-current-229319 \
+    && export GCP_PROJECT=fluted-current-229319 #\
+    #&& export GCP_REGION=${QA_REGION} \
+    #&& export REGION=${QA_REGION} \
+    #&& kcreds services-1
+  #if [[ -f "${HOME}/.pgpass_qa" ]]; then
+  #  export PGPASSFILE="${HOME}/.pgpass_qa"
+  #fi
+}
+
 
 # Custom functions for working with gcp
 function dall {

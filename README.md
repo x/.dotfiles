@@ -19,3 +19,11 @@
 ```
 brew install git bash bash-completion tmux reattach-to-user-namespace
 ```
+
+# Setting up Python for neovim
+
+```
+$ pyenv virtualenv 3.9.1 neovim
+$ pyenv local neovim
+$ pip install ipython flake8 mypy black
+```
