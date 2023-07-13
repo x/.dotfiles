@@ -39,7 +39,7 @@ Plugin 'google/vim-maktaba'
 Plugin 'google/vim-codefmt'
 Plugin 'google/vim-glaive'
 Plugin 'psf/black'
-Plugin 'fisadev/vim-isort'
+"Plugin 'fisadev/vim-isort'
 
 " Wiki
 Plugin 'vimwiki/vimwiki'
@@ -96,26 +96,23 @@ set clipboard=unnamed
 " syntax highlighting on
 syntax on
 
+" Workaround for GitGutter to match colorscheme (BEFORE)
+autocmd ColorScheme * highlight! link SignColumn LineNr
+
 " colorscheme
 set t_Co=256
-colorscheme one
+set background=dark
+colorscheme dracula
 let g:airline_theme='one'
 
-" dark mode enabled?
-if system("defaults read -g AppleInterfaceStyle") =~ '^Dark'
-  colorscheme dracula "jellybeans
-else
-  set background=light "github
-endif
-
 " Don't use the color scheme's bg color
-"hi Normal guibg=NONE ctermbg=NONE
+hi Normal guibg=NONE ctermbg=NONE
 
 " Enable italics coments
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
 highlight Comment cterm=italic gui=italic
-let g:dracula_italic = 1
+let g:dracula_italic = 3
 
 " turn on search highlighting
 set hlsearch
@@ -144,6 +141,7 @@ au FileType sql setl ts=2 sts=0 sw=2 et
 au FileType sh setl ts=2 sw=2 ts=2 et
 au FileType javascript setl ts=2 sw=2 ts=2 et
 au FileType markdown set wrap linebreak
+au FileType tf setl ts=2 sts=0 sw=2 et
 
 " Remove all trailing whitespace
 autocmd BufWritePre <buffer> :%s/\s\+$//e

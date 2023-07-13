@@ -78,7 +78,7 @@ function getPS1 {
     if [[ "$_EXIT" == 0 ]]; then
 		CLOSE_CHAR="$"
 	else
-		CLOSE_CHAR="𐄂"
+		CLOSE_CHAR="☭"
 	fi
 
 	# Add closing char
@@ -124,14 +124,6 @@ function dall {
 	docker $@ $(docker ps -q)
 }
 
-function mktestsub {
-	gcloud pubsub subscriptions create $(whoami)-test-${1} --topic=$1 --expiration-period=7d --message-retention-duration=1d
-}
-
-function rmtestsub {
-	gcloud pubsub subscriptions delete $(whoami)-test-${1}
-}
-
 function pull {
 	while True; do
 		gcloud pubsub subscriptions pull ${1} --limit=100000 | cut -d ' ' -f 2 | grep {
@@ -160,4 +152,11 @@ function notify {
 	while read line; do
 		osascript -e "display notification \"$line\" with title \"notify\" sound name \"Submarine\""
 	done
+}
+
+alias fixlogs="sudo chmod -R 777 /Users/devon/.config/gcloud/logs"
+
+
+function mknamedtestsub {
+  gcloud pubsub subscriptions create "${USER}-test-${1}-${2}" --topic="${1}" --expiration-period=7d --message-retention-duration=1h --labels="billing_component=testing,user=${USER}"
 }
