@@ -11,6 +11,7 @@ echo "linking..."
 ln -sF $DIR/zshrc         $_ZSHRC_LOCATION
 ln -sF $DIR/vimrc         ~/.vimrc
 ln -sF $DIR/config/nvim   ~/.config/nvim
+ln -sF $DIR/config/kitty  ~/.config/kitty
 ln -sF $DIR/tmux.conf     ~/.tmux.conf
 ln -sF $DIR/gitconfig     ~/.gitconfig
 ln -sF $DIR/xvimrc        ~/.xvimrc
