@@ -1,8 +1,3 @@
-# If not calling this from the Oden Profile, source the Oden Profile
-if [ "${BASH_SOURCE[0]}" = "" ]; then
-	. ~/.oden_profile
-fi
-
 # for go
 export PATH="$PATH:$HOME/go/bin"
 
