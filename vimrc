@@ -93,7 +93,7 @@ let g:ale_python_auto_poetry = 1  " Enable poetry for python
 
 
 let g:ale_linters = {
-\	"python": ["ruff", "mypy"]
+\	"python": ["ruff", "mypy"],
 \	"bash": ["shellcheck"],
 \	"terraform": ["terraform", "tflint"]
 \}
