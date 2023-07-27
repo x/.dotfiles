@@ -90,20 +90,14 @@ function getPS1 {
 setopt PROMPT_SUBST
 export PS1="\$(getPS1)"
 
-# 256 colors in tmux
-alias tmux="tmux -2"
-
-# Alias vim to neovim if available
-if command -v nvim 1>/dev/null 2>&1; then alias vim='nvim'; fi
-
-# Alias alphabet
-alias c="cat"
-alias d="docker"
-alias g="git"
-alias k="kubectl"
+# Shortcut for ipython
 alias p="poetry run ipython"
-alias t="tmux"
-alias v="vim"
+
+# Always color for less
+export LESS='-R'
+
+# If installed, alias cat to bat
+if command -v bat 1>/dev/null 3>&1; then alias cat='bat --paging=never'; fi
 
 # setup ssh-agent with my private key
 if [ -z "$SSH_AUTH_SOCK" ]; then eval $(ssh-agent -s) && ssh-add; fi
