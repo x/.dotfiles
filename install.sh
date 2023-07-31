@@ -12,6 +12,7 @@ ln -sF $DIR/zshrc         "${_ZSHRC_LOCATION}"
 ln -sF $DIR/vimrc         ~/.vimrc
 ln -sF $DIR/ideavimrc     ~/.ideavimrc
 ln -sF $DIR/config/kitty  ~/.config/kitty
+ln -sF $DIR/config/bat    ~/.config/bat
 ln -sF $DIR/tmux.conf     ~/.tmux.conf
 ln -sF $DIR/gitconfig     ~/.gitconfig
 ln -sF $DIR/xvimrc        ~/.xvimrc
