@@ -100,12 +100,17 @@ export LESS='-R'
 if command -v bat 1>/dev/null 3>&1; then alias cat='bat --paging=never'; fi
 
 # setup ssh-agent with my private key
-if [ -z "$SSH_AUTH_SOCK" ]; then eval $(ssh-agent -s) && ssh-add; fi
+if [ -z "${SSH_AUTH_SOCK}" ]; then
+	eval $(ssh-agent -s) && ssh-add;
+fi
 
 #export CLOUDSDK_PYTHON=/Users/devon/.pyenv/shims/python3
 
 # if installed, use jenv for java
-if command -v jenv 1>/dev/null 3>&1; then eval "$(jenv init -)"; fi
+# $I_AM implies being called by oden dotfiles which handle jenv
+if [[ ! -x "$(command -v jenv 1>/dev/null 3>&1)" && -n "${I_AM}" ]]; then
+	eval "$(jenv init -)";
+fi
 
 # A couple more aliases for gcp
 alias personal="gcloud config set project fluted-current-229319"
