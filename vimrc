@@ -1,11 +1,12 @@
-"" --- Plugins (managed by Vundle) ---
+""" --- Plugins (managed by Vundle) ---
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'       " Let vundle manage itself
 Plugin 'vim-airline/vim-airline' " Decoration
-Plugin 'ctrlpvim/ctrlp.vim'      " Fuzzy search
+Plugin 'junegunn/fzf'            " Fuzzy search
+Plugin 'junegunn/fzf.vim'        " Fuzzy search
 Plugin 'tpope/vim-fugitive'      " Standard git commands
 Plugin 'tpope/vim-rhubarb'       " Just the gbrowse command
 Plugin 'airblade/vim-gitgutter'  " See diffs
@@ -26,7 +27,7 @@ Plugin 'dense-analysis/ale'      " Linter and formatter
 call vundle#end()
 
 
-"" --- Basic Settings ---
+""" --- Basic Settings ---
 
 set nocompatible      " required
 filetype off          " required
@@ -37,15 +38,19 @@ set laststatus=2      " turn on status bar
 set number            " show line numbers
 
 
-"" --- Keybindings ---
+""" --- Keybindings ---
 
 imap jj <Esc>
 nnoremap <c-j> 5<c-e>
 nnoremap <c-k> 5<c-y>
 set pastetoggle=<F2>
 
+" Fzf
+nnoremap <C-p> :Files<CR>
+let g:fzf_layout = { 'window': 'enew' }
 
-"" --- Theme ---
+
+""" --- Theme ---
 
 " Hack to fix the git-gutter background behavior
 autocmd ColorScheme * highlight! link SignColumn LineNr
@@ -86,7 +91,7 @@ au FileType tf setl ts=2 sts=0 sw=2 et
 filetype plugin indent on
 
 
-"" --- Language Server Settings ---
+""" --- Language Server Settings ---
 
 let g:ale_fix_on_save = 1         " Run fixers on save
 let g:ale_python_auto_poetry = 1  " Enable poetry for python
@@ -102,23 +107,3 @@ let g:ale_fixers = {
 \	"python": ["black", "ruff"],
 \	"bash": ["shfmt"]
 \}
-
-
-"" --- Ctrl-P Settings ---
-
-let ctrlp_filter_greps = "".
-    \ "egrep -iv '\\.(" .
-    \ "jar|class|swp|swo|log|so|o|pyc|jpe?g|png|gif|mo|po" .
-    \ ")$' | " .
-    \ "egrep -v '^(\\./)?(" .
-    \ "vendor/|lib/|classes/|libs/|deploy/|.git/|.hg/|.svn/|.*migrations/" .
-    \ ")'"
-let my_ctrlp_git_command = "" .
-    \ "cd %s && git ls-files | " .
-    \ ctrlp_filter_greps
-if has("unix")
-    let my_ctrlp_user_command = "" .
-    \ "find %s '(' -type f -or -type l ')' -maxdepth 15 -not -path '*/\\.*/*' | " .
-    \ ctrlp_filter_greps
-endif
-let g:ctrlp_user_command = ['.git/', my_ctrlp_git_command, my_ctrlp_user_command]
