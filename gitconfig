@@ -21,7 +21,7 @@
 	sup = submodule update --init --recursive
 	d = diff --compact-summary
 	p = push --no-verify
-	watch = "!gh run watch \"$(gh run list --limit 1 --json databaseId --jq '.[].databaseId')\""
+	watch = "!gh run watch \"$(gh run list --branch "$(git rev-parse --abbrev-ref HEAD)" --limit 1 --json databaseId --jq '.[].databaseId')\""
 [push]
 	default = current
 	autoSetupRemote = true
