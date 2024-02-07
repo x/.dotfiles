@@ -104,8 +104,6 @@ if [ -z "${SSH_AUTH_SOCK}" ]; then
 	eval $(ssh-agent -s) && ssh-add;
 fi
 
-#export CLOUDSDK_PYTHON=/Users/devon/.pyenv/shims/python3
-
 # if installed, use jenv for java
 # $I_AM implies being called by oden dotfiles which handle jenv
 if [[ ! -x "$(command -v jenv 1>/dev/null 3>&1)" && -n "${I_AM}" ]]; then
@@ -114,7 +112,6 @@ fi
 
 # A couple more aliases for gcp
 alias personal="gcloud config set project fluted-current-229319"
-alias gssh="gcloud alpha cloud-shell ssh"
 alias g="gcloud"
 alias code="code-insiders"
 
@@ -125,53 +122,7 @@ function personal_gcp(){
     && export SERVER_ENV=personal \
     && export PROJECT_ID=fluted-current-229319 \
     && export GCP_PROJECT=fluted-current-229319 #\
-    #&& export GCP_REGION=${QA_REGION} \
-    #&& export REGION=${QA_REGION} \
-    #&& kcreds services-1
-  #if [[ -f "${HOME}/.pgpass_qa" ]]; then
-  #  export PGPASSFILE="${HOME}/.pgpass_qa"
-  #fi
 }
 
-
-# Custom functions for working with gcp
-function dall {
-	docker $@ $(docker ps -q)
-}
-
-function pull {
-	while True; do
-		gcloud pubsub subscriptions pull ${1} --limit=100000 | cut -d ' ' -f 2 | grep {
-	done
-}
-
-function podlogs {
-	gcloud logging read resource.labels.pod_name=${1} --format='value(jsonPayload.message)'
-}
-
-function whiletrue {
-	while true; do bash -c "$@"; done
-}
-
-function ifdiff {
-	lastline=""
-	while read line; do
-		if [[ "${line}" != "${lastline}" ]]; then
-			echo $line
-		fi
-		lastline="${line}"
-	done
-}
-
-function notify {
-	while read line; do
-		osascript -e "display notification \"$line\" with title \"notify\" sound name \"Submarine\""
-	done
-}
-
+# More aliases
 alias fixlogs="sudo chmod -R 777 /Users/devon/.config/gcloud/logs"
-
-
-function mknamedtestsub {
-  gcloud pubsub subscriptions create "${USER}-test-${1}-${2}" --topic="${1}" --expiration-period=7d --message-retention-duration=1h --labels="billing_component=testing,user=${USER}"
-}

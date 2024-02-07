@@ -103,7 +103,25 @@ let g:ale_linters = {
 \	"terraform": ["terraform", "tflint"]
 \}
 let g:ale_fixers = {
-\	"*": ["remove_trailing_lines"],
-\	"python": ["black", "ruff"],
+\	"*": ["remove_trailing_lines", "trim_whitespace"],
+\	"python": ["ruff", "ruff_format"],
 \	"bash": ["shfmt"]
+\}
+
+let g:ale_echo_cursor = 1
+
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
+highlight clear ALEErrorSign
+highlight clear ALEWarningSign
+
+""" --- Copilot Settings ---
+
+let g:copilot_filetypes = {
+\   "*": v:false,
+\   "python": v:true,
+\   "html": v:true,
+\   "css": v:true,
+\   "js": v:true,
+\   "terraform": v:true,
 \}

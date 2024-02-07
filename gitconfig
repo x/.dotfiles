@@ -20,8 +20,11 @@
 	ten = !git --no-pager log -10 --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	sup = submodule update --init --recursive
 	d = diff --compact-summary
+	p = push --no-verify
+	watch = "!gh run watch \"$(gh run list --limit 1 --json databaseId --jq '.[].databaseId')\""
 [push]
 	default = current
+	autoSetupRemote = true
 [web]
 	browser = open
 [branch]
