@@ -20,8 +20,7 @@
 	ten = !git --no-pager log -10 --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	sup = submodule update --init --recursive
 	d = diff --compact-summary
-	p = push --no-verify
-	watch = "!gh run watch \"$(gh run list --branch "$(git rev-parse --abbrev-ref HEAD)" --limit 1 --json databaseId --jq '.[].databaseId')\""
+	watch = "!for jobID in $(gh run list --branch \"$(git rev-parse --abbrev-ref HEAD)\" --json databaseId --jq '.[].databaseId'); do gh run watch "${jobID}"; done"
 [push]
 	default = current
 	autoSetupRemote = true
