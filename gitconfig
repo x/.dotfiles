@@ -11,15 +11,16 @@
 	tool = vimdiff
 [alias]
 	b = branch --sort=-committerdate --format='%(refname:short) %(color:dim)(%(committerdate:relative))' --color=always
-	co = checkout
 	cb = "!f(){ git checkout $(git b | fzf --ansi --nth=1 | cut -d' ' -f1);};f"
-	s = status
-	l = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-	r = rebase --interactive origin/HEAD
-	lb = !git reflog show --pretty=format:'%gs ~ %gd' --date=relative | grep 'checkout:' | grep -oE '[^ ]+ ~ .*' | awk -F~ '!seen[]++' | head -n 10 | awk -F' ~ HEAD@{' '{printf(\"  \\033[33m%s: \\033[37m %s\\033[0m\\n\", substr(, 1, length()-1), )}'
-	ten = !git --no-pager log -10 --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-	sup = submodule update --init --recursive
+	co = checkout
 	d = diff --compact-summary
+	l = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	lb = !git reflog show --pretty=format:'%gs ~ %gd' --date=relative | grep 'checkout:' | grep -oE '[^ ]+ ~ .*' | awk -F~ '!seen[]++' | head -n 10 | awk -F' ~ HEAD@{' '{printf(\"  \\033[33m%s: \\033[37m %s\\033[0m\\n\", substr(, 1, length()-1), )}'
+	pr = "!f(){ gh pr view --web || gh pr create --fill --web;};f"
+	prs = "!f(){ watch --color gh pr status;};f"
+	s = status
+	sup = submodule update --init --recursive
+	ten = !git --no-pager log -10 --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	watch = "!for jobID in $(gh run list --branch \"$(git rev-parse --abbrev-ref HEAD)\" --json databaseId --jq '.[].databaseId'); do gh run watch "${jobID}"; done"
 [push]
 	default = current
@@ -31,7 +32,7 @@
 [pull]
 	rebase = true
 	default = current
-[submodule]
-	recurse = true
+#[submodule]
+#	recurse = true
 [core]
 	excludesfile = ~/.gitignore

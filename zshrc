@@ -13,6 +13,9 @@ export PATH="$PATH:/opt/homebrew/bin"
 # for jenv
 export PATH="$HOME/.jenv/bin:$PATH"
 
+# ~/.bin
+export PATH="$PATH:$HOME/.bin"
+
 # Fix ctrl-r in zsh
 bindkey "^R" history-incremental-pattern-search-backward
 
