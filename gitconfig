@@ -21,7 +21,8 @@
 	s = status
 	sup = submodule update --init --recursive
 	ten = !git --no-pager log -10 --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-	watch = "!for jobID in $(gh run list --branch \"$(git rev-parse --abbrev-ref HEAD)\" --json databaseId --jq '.[].databaseId'); do gh run watch "${jobID}"; done"
+	watch = "!for jobID in $(gh run list --commit=\"$(git rev-parse HEAD)\" --json databaseId --jq '.[].databaseId'); do gh run watch "${jobID}"; done"
+	actions = "!(){ gh run list --commit=\"$(git rev-parse HEAD)\";};f"
 [push]
 	default = current
 	autoSetupRemote = true
