@@ -21,8 +21,7 @@
 	s = status
 	sup = submodule update --init --recursive
 	ten = !git --no-pager log -10 --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-	workflows = "!f(){ open \"$(gh repo view --json url -q '.url')/actions/workflows/autoupdate-cloudrun.yml?query=branch%3A$(git branch --show-current)\"; }; f"
-	wf = workflows
+	actions = "!f(){ open \"$(gh repo view --json url -q '.url')/actions?query=branch%3A$(git branch --show-current)\"; }; f"
 [push]
 	default = current
 	autoSetupRemote = true
