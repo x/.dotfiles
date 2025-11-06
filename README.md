@@ -1,29 +1,19 @@
 # Installation
 
-1. ```cd ~ && git clone git@github.com:x/.dotfiles.git```
-2. ```cd ~/.dotfiles && ./install.sh```
-3. ```echo ". ~/.bashrc" > ~/.bash_profile```
-
-# Installing fancy fonts for vim-airline
-
-1. ```cd ~ && git clone git@github.com:powerline/fonts.git ~/.powerline_fonts```
-2. ```cd ~/.powerline_fonts && ./install.sh```
-
-# Setting up fonts
-```brew tap homebrew/cask-fonts && brew install font-fira-code```
-
-# Using macvim instead of system vim (needs full XCode install)
-```brew install macvim --override-system-vim```
-
-# Other stuff to brew-install
-```
-brew install git bash bash-completion tmux reattach-to-user-namespace
+Make a ~/.config dir if it doesn't already exist
+```bash
+mkdir -p ~/.config
 ```
 
-# Setting up Python for neovim
-
-```
-$ pyenv virtualenv 3.9.1 neovim
-$ pyenv local neovim
-$ pip install ipython flake8 mypy black
+Link everything you want to link
+```bash
+ln -sF $HOME/.dotfiles/zshrc         ~/.zshrc
+ln -sF $HOME/.dotfiles/vimrc         ~/.vimrc
+ln -sF $HOME/.dotfiles/ideavimrc     ~/.ideavimrc
+ln -sF $HOME/.dotfiles/config/kitty  ~/.config/kitty
+ln -sF $HOME/.dotfiles/config/bat    ~/.config/bat
+ln -sF $HOME/.dotfiles/gitconfig     ~/.gitconfig
+ln -sF $HOME/.dotfiles/xvimrc        ~/.xvimrc
+ln -sF $HOME/.dotfiles/inputrc       ~/.inputrc
+ln -sF $HOME/.dotfiles/psqlrc        ~/.psqlrc
 ```

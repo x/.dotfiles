@@ -1,5 +1,5 @@
 [user]
-	email = devon@oden.io
+	email = devon.peticolas@scale.com
 	name = Devon Peticolas
 [color]
 	ui = true
@@ -32,7 +32,7 @@
 [pull]
 	rebase = true
 	default = current
-#[submodule]
-#	recurse = true
 [core]
 	excludesfile = ~/.gitignore
+[remote "origin"]
+	prune = true

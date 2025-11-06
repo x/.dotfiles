@@ -7,12 +7,6 @@ export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/b
 # Add arm homebrew to the path
 export PATH="$PATH:/opt/homebrew/bin"
 
-# sbin
-#export PATH="$PATH:/usr/local/sbin"
-
-# for jenv
-export PATH="$HOME/.jenv/bin:$PATH"
-
 # ~/.bin
 export PATH="$PATH:$HOME/.bin"
 
@@ -40,61 +34,32 @@ export PROMPT_COMMAND="history -a; history -n"
 # Set the default editor to vim
 export EDITOR=vim
 
-# Set the PS1
-function shortDirs {
-	echo -n "$(dirs | perl -F/ -ane 'print join( "/", map { $i++ < @F - 1 ?  substr $_,0,1 : $_ } @F)')"
-}
-
-function branch {
-	ref=$(git symbolic-ref HEAD 2>/dev/null | sed 's/refs\/heads\///g')
-	if [ -z "$ref" ]; then
-		echo -n ""
-	else
-		echo -n " ($ref)"
-	fi
-}
-
+# Set up the PS1
 function getPS1 {
-	_EXIT="$?" # Last command's exit status
-	_ENV="${CLOUDSDK_ACTIVE_CONFIG_NAME}"
+	_LAST_COMMAND_EXIT="$?"
+	
+	_SHORT_DIRS="$(dirs | perl -F/ -ane 'print join( "/", map { $i++ < @F - 1 ?  substr $_,0,1 : $_ } @F)')"
+	_PS1="$_SHORT_DIRS"
 
-	# Add knamespace if in a non-default knamespace
-	if [ "${KUBECTL_NAMESPACE}" ] && [ $KUBECTL_NAMESPACE != 'default' ]; then
-		_ENV="$_ENV∣$KUBECTL_NAMESPACE"
-	fi
-
-	# Add Python venv if in a virtual env
-	if [ "${VIRTUAL_ENV}" ]; then
-		local _VENV="$(basename "${VIRTUAL_ENV}")"
-		_ENV="$_ENV∣$_VENV"
-	fi
-
-	_PS1="[$_ENV] $(shortDirs)"
-
-	# Add git if in a git repo
 	_REF=$(git symbolic-ref HEAD 2>/dev/null | sed 's/refs\/heads\///g')
 	if [ "$_REF" ]; then
 		_PS1="$_PS1 ($_REF)"
 	fi
 
-	# Pick the exit color
-    if [[ "$_EXIT" == 0 ]]; then
+    if [[ "$_LAST_COMMAND_EXIT" == 0 ]]; then
 		CLOSE_CHAR="$"
 	else
 		CLOSE_CHAR="☭"
 	fi
-
-	# Add closing char
 	_PS1="$_PS1 ${CLOSE_CHAR} "
 
 	echo -e "$_PS1"
 }
-
 setopt PROMPT_SUBST
 export PS1="\$(getPS1)"
 
-# Shortcut for ipython
-alias p="poetry run ipython"
+# Shortcut for ipython, can also execute like python
+alias p="uv run ipython"
 
 # Always color for less
 export LESS='-R'
@@ -106,26 +71,3 @@ if command -v bat 1>/dev/null 3>&1; then alias cat='bat --paging=never'; fi
 if [ -z "${SSH_AUTH_SOCK}" ]; then
 	eval $(ssh-agent -s) && ssh-add;
 fi
-
-# if installed, use jenv for java
-# $I_AM implies being called by oden dotfiles which handle jenv
-if [[ ! -x "$(command -v jenv 1>/dev/null 3>&1)" && -n "${I_AM}" ]]; then
-	eval "$(jenv init -)";
-fi
-
-# A couple more aliases for gcp
-alias personal="gcloud config set project fluted-current-229319"
-alias g="gcloud"
-alias code="code-insiders"
-
-# Personal GCP
-function personal_gcp(){
-  log info "Connecting to personal project fluted-current-229319"
-  export CLOUDSDK_ACTIVE_CONFIG_NAME=qa \
-    && export SERVER_ENV=personal \
-    && export PROJECT_ID=fluted-current-229319 \
-    && export GCP_PROJECT=fluted-current-229319 #\
-}
-
-# More aliases
-alias fixlogs="sudo chmod -R 777 /Users/devon/.config/gcloud/logs"
