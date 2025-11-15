@@ -1,13 +1,11 @@
-" Bare minimum vimrc, use neovim.
-
 """ --- Basic Settings ---
 
 set nocompatible      " required
-filetype off          " required
-syntax on             " syntax highlighting on
-set clipboard=unnamed " use system clipboard
+" filetype off        " REMOVED: Only needed for Vundle
+syntax enable         " syntax highlighting on
+set clipboard=unnamed " use system clipboard (use 'unnamedplus' for Linux)
 set hlsearch          " turn on search highlighting
-set laststatus=2      " turn on status bar
+set laststatus=2      " always show status bar
 set number            " show line numbers
 
 
@@ -18,25 +16,36 @@ nnoremap <c-j> 5<c-e>
 nnoremap <c-k> 5<c-y>
 set pastetoggle=<F2>
 
-" Fzf
+" Fzf configuration
 nnoremap <C-p> :Files<CR>
 let g:fzf_layout = { 'window': 'enew' }
 
 
 """ --- Indent Rules ---
 
-set nocindent
-set nosmartindent
+" General defaults
 set tabstop=4
 set shiftwidth=4
 set autoindent
+set expandtab         " converts tabs to spaces (usually recommended)
 
-au FileType py setl ts=4 sts=4 sw=4 tw=100 et
-au FileType sql setl ts=2 sts=0 sw=2 et
-au FileType sh setl ts=2 sw=2 ts=2 et
-au FileType javascript setl ts=2 sw=2 ts=2 et
-au FileType markdown set wrap linebreak
-au FileType tf setl ts=2 sts=0 sw=2 et
+" Filetype-specific overrides
+augroup FileTypeOverrides
+    autocmd!
+    autocmd FileType python     setl ts=4 sts=4 sw=4 tw=100 et
+    autocmd FileType sql        setl ts=2 sts=2 sw=2 et
+    autocmd FileType sh         setl ts=2 sts=2 sw=2 et
+    autocmd FileType javascript setl ts=2 sts=2 sw=2 et
+    autocmd FileType markdown   setl wrap linebreak
+    autocmd FileType tf         setl ts=2 sts=2 sw=2 et
+augroup END
 
-" Allow plugins to override
+" Enable filetype detection, plugins, and indentation rules
 filetype plugin indent on
+
+" Theme
+colorscheme dracula
+
+" Force transparent background
+highlight Normal ctermbg=NONE guibg=NONE
+highlight NonText ctermbg=NONE guibg=NONE

@@ -109,3 +109,8 @@ if command -v bat 1>/dev/null 3>&1; then alias cat='bat --paging=never'; fi
 
 # setup ssh-agent with my private key
 [[ -z "${SSH_AUTH_SOCK}" ]] && eval $(ssh-agent -s) && ssh-add
+
+function notify {
+    local message="${*:-$([ $? -eq 0 ] && echo 'SUCCESS' || echo 'FAILED')}"
+    osascript -e "tell application \"System Events\" to display dialog \"$message\" buttons {\"OK\"} default button \"OK\" with icon note"
+}
