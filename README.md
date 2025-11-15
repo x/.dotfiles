@@ -17,3 +17,8 @@ ln -sF $HOME/.dotfiles/xvimrc        ~/.xvimrc
 ln -sF $HOME/.dotfiles/inputrc       ~/.inputrc
 ln -sF $HOME/.dotfiles/psqlrc        ~/.psqlrc
 ```
+
+Install the brewfile
+```bash
+brew bundle
+```

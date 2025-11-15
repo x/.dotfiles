@@ -1,0 +1,5 @@
+brew "bat"
+brew "fzf"
+brew "gh"
+brew "pyenv"
+cask "kitty"
