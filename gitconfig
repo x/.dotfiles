@@ -1,6 +1,6 @@
 [user]
-	email = devon.peticolas@scale.com
 	name = Devon Peticolas
+	email = devon.peticolas@scale.com
 [color]
 	ui = true
 [color "status"]
@@ -13,6 +13,7 @@
 	b = branch --sort=-committerdate --format='%(refname:short) %(color:dim)(%(committerdate:relative))' --color=always
 	cb = "!f(){ git checkout $(git b | fzf --ansi --nth=1 | cut -d' ' -f1);};f"
 	co = checkout
+	cob = "!f(){ git checkout -b \"$(whoami)_$1\"; };f"
 	d = diff --compact-summary
 	l = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	lb = !git reflog show --pretty=format:'%gs ~ %gd' --date=relative | grep 'checkout:' | grep -oE '[^ ]+ ~ .*' | awk -F~ '!seen[]++' | head -n 10 | awk -F' ~ HEAD@{' '{printf(\"  \\033[33m%s: \\033[37m %s\\033[0m\\n\", substr(, 1, length()-1), )}'

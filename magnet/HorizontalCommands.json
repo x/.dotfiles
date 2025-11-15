@@ -1,0 +1,979 @@
+[
+  {
+    "activationArea": {
+      "area": {
+        "segments": [
+          {
+            "frame": [
+              [0,3],
+              [1,6]
+            ],
+            "id": "16F9283A-1AB8-447D-9875-431DCA3A80B6"
+          }
+        ]
+      },
+      "available": true,
+      "enabled": true
+    },
+    "axis": "horizontal",
+    "category": "custom",
+    "id": "869DBDF4-34D4-4EAC-8452-144DD41EC7C1",
+    "targetArea": {
+      "area": {
+        "segments": [
+          {
+            "frame": [
+              [0,0],
+              [12,12]
+            ],
+            "id": "8ABBF216-AD7F-4E09-887A-440FCCC6E1C0"
+          }
+        ]
+      },
+      "available": true
+    },
+    "keyboardShortcut": {
+      "available": true,
+      "enabled": true,
+      "shortcut": {
+        "carbonKeyCode": 123,
+        "carbonModifiers": 6144
+      }
+    },
+    "legacyKey": "expandWindowWestComboKey",
+    "name": "command:default.name.left",
+    "visibleInGreenButtonMenu": {
+      "available": true,
+      "enabled": true
+    },
+    "visibleInMenuBar": {
+      "available": true,
+      "enabled": true
+    }
+  },
+  {
+    "activationArea": {
+      "area": {
+        "segments": [
+          {
+            "frame": [
+              [23,3],
+              [1,6]
+            ],
+            "id": "5127078D-A627-4AE1-9C32-FB5D410F6AEF"
+          }
+        ]
+      },
+      "available": true,
+      "enabled": true
+    },
+    "axis": "horizontal",
+    "category": "custom",
+    "id": "5F8D16F9-4538-422D-9062-779261E9C365",
+    "targetArea": {
+      "area": {
+        "segments": [
+          {
+            "frame": [
+              [12,0],
+              [12,12]
+            ],
+            "id": "E4A54C83-96B4-4C14-B7BC-64406CAF132E"
+          }
+        ]
+      },
+      "available": true
+    },
+    "keyboardShortcut": {
+      "available": true,
+      "enabled": true,
+      "shortcut": {
+        "carbonKeyCode": 124,
+        "carbonModifiers": 6144
+      }
+    },
+    "legacyKey": "expandWindowEastComboKey",
+    "name": "command:default.name.right",
+    "visibleInGreenButtonMenu": {
+      "available": true,
+      "enabled": true
+    },
+    "visibleInMenuBar": {
+      "available": true,
+      "enabled": true
+    }
+  },
+  {
+    "activationArea": {
+      "area": {
+        "segments": [
+          {
+            "frame": [
+              [0,1],
+              [1,2]
+            ],
+            "id": "0A490210-934B-4F14-AA50-9DBFFBF75922"
+          },
+          {
+            "frame": [
+              [23,1],
+              [1,2]
+            ],
+            "id": "856A15D7-3BFD-4042-A4F0-FBCFE542452F"
+          }
+        ]
+      },
+      "available": true,
+      "enabled": true
+    },
+    "axis": "horizontal",
+    "category": "custom",
+    "id": "733CC74C-FC53-41DD-939A-F9DBEF08F949",
+    "targetArea": {
+      "area": {
+        "segments": [
+          {
+            "frame": [
+              [0,0],
+              [24,6]
+            ],
+            "id": "C9188C22-F53B-4BD9-8C0F-2A070EF1015C"
+          }
+        ]
+      },
+      "available": true
+    },
+    "keyboardShortcut": {
+      "available": true,
+      "enabled": true,
+      "shortcut": {
+        "carbonKeyCode": 126,
+        "carbonModifiers": 6144
+      }
+    },
+    "legacyKey": "expandWindowNorthComboKey",
+    "name": "command:default.name.up",
+    "visibleInGreenButtonMenu": {
+      "available": true,
+      "enabled": true
+    },
+    "visibleInMenuBar": {
+      "available": true,
+      "enabled": true
+    }
+  },
+  {
+    "activationArea": {
+      "area": {
+        "segments": [
+          {
+            "frame": [
+              [0,9],
+              [1,2]
+            ],
+            "id": "EBDD4682-AA06-4172-882E-4DF983184925"
+          },
+          {
+            "frame": [
+              [23,9],
+              [1,2]
+            ],
+            "id": "20B04FF6-2225-488E-833A-AC0973035BBC"
+          }
+        ]
+      },
+      "available": true,
+      "enabled": true
+    },
+    "axis": "horizontal",
+    "category": "custom",
+    "id": "FD3C8478-2D05-40CF-9B0B-C860331C636B",
+    "targetArea": {
+      "area": {
+        "segments": [
+          {
+            "frame": [
+              [0,6],
+              [24,6]
+            ],
+            "id": "6CAEB70C-28C3-4BC5-8B0E-1013ACC0AEFA"
+          }
+        ]
+      },
+      "available": true
+    },
+    "keyboardShortcut": {
+      "available": true,
+      "enabled": true,
+      "shortcut": {
+        "carbonKeyCode": 125,
+        "carbonModifiers": 6144
+      }
+    },
+    "legacyKey": "expandWindowSouthComboKey",
+    "name": "command:default.name.down",
+    "visibleInGreenButtonMenu": {
+      "available": true,
+      "enabled": true
+    },
+    "visibleInMenuBar": {
+      "available": true,
+      "enabled": true
+    }
+  },
+  {
+    "axis": "horizontal",
+    "category": "divider",
+    "id": "C054FCE3-8155-45C0-99EE-DAD56882407D",
+    "visibleInGreenButtonMenu": {
+      "available": true,
+      "enabled": true
+    },
+    "visibleInMenuBar": {
+      "available": true,
+      "enabled": true
+    }
+  },
+  {
+    "activationArea": {
+      "area": {
+        "segments": [
+          {
+            "frame": [
+              [0,0],
+              [1,1]
+            ],
+            "id": "A23DAA64-2BE7-4E8D-BC2A-360D2605ADA8"
+          }
+        ]
+      },
+      "available": true,
+      "enabled": true
+    },
+    "axis": "horizontal",
+    "category": "custom",
+    "id": "8E44E251-B2AF-4215-8353-40D0FA0B51B2",
+    "targetArea": {
+      "area": {
+        "segments": [
+          {
+            "frame": [
+              [0,0],
+              [12,6]
+            ],
+            "id": "DF5ABB59-0DB2-464E-BBBB-65B2F010454A"
+          }
+        ]
+      },
+      "available": true
+    },
+    "keyboardShortcut": {
+      "available": true,
+      "enabled": true,
+      "shortcut": {
+        "carbonKeyCode": 32,
+        "carbonModifiers": 6144
+      }
+    },
+    "legacyKey": "expandWindowNorthWestComboKey",
+    "name": "command:default.name.topLeft",
+    "visibleInGreenButtonMenu": {
+      "available": true,
+      "enabled": true
+    },
+    "visibleInMenuBar": {
+      "available": true,
+      "enabled": true
+    }
+  },
+  {
+    "activationArea": {
+      "area": {
+        "segments": [
+          {
+            "frame": [
+              [23,0],
+              [1,1]
+            ],
+            "id": "F2B6ABF8-F3FB-4818-97C1-20D6C20B9D4D"
+          }
+        ]
+      },
+      "available": true,
+      "enabled": true
+    },
+    "axis": "horizontal",
+    "category": "custom",
+    "id": "A4CD8000-4400-4E4B-9241-FB6ACC355E88",
+    "targetArea": {
+      "area": {
+        "segments": [
+          {
+            "frame": [
+              [12,0],
+              [12,6]
+            ],
+            "id": "FC215409-8D87-485A-9764-0770D9F3F074"
+          }
+        ]
+      },
+      "available": true
+    },
+    "keyboardShortcut": {
+      "available": true,
+      "enabled": true,
+      "shortcut": {
+        "carbonKeyCode": 34,
+        "carbonModifiers": 6144
+      }
+    },
+    "legacyKey": "expandWindowNorthEastComboKey",
+    "name": "command:default.name.topRight",
+    "visibleInGreenButtonMenu": {
+      "available": true,
+      "enabled": true
+    },
+    "visibleInMenuBar": {
+      "available": true,
+      "enabled": true
+    }
+  },
+  {
+    "activationArea": {
+      "area": {
+        "segments": [
+          {
+            "frame": [
+              [0,11],
+              [1,1]
+            ],
+            "id": "C252BBDA-409C-48D4-B3FB-5D1D66C1E99E"
+          }
+        ]
+      },
+      "available": true,
+      "enabled": true
+    },
+    "axis": "horizontal",
+    "category": "custom",
+    "id": "8D07932C-A9CB-45F1-A53B-F7CF868A545B",
+    "targetArea": {
+      "area": {
+        "segments": [
+          {
+            "frame": [
+              [0,6],
+              [12,6]
+            ],
+            "id": "387D93C2-05CD-4F74-B103-6813A3258DC2"
+          }
+        ]
+      },
+      "available": true
+    },
+    "keyboardShortcut": {
+      "available": true,
+      "enabled": true,
+      "shortcut": {
+        "carbonKeyCode": 38,
+        "carbonModifiers": 6144
+      }
+    },
+    "legacyKey": "expandWindowSouthWestComboKey",
+    "name": "command:default.name.bottomLeft",
+    "visibleInGreenButtonMenu": {
+      "available": true,
+      "enabled": true
+    },
+    "visibleInMenuBar": {
+      "available": true,
+      "enabled": true
+    }
+  },
+  {
+    "activationArea": {
+      "area": {
+        "segments": [
+          {
+            "frame": [
+              [23,11],
+              [1,1]
+            ],
+            "id": "96082428-5333-4703-9B73-49CC1DF4FFEC"
+          }
+        ]
+      },
+      "available": true,
+      "enabled": true
+    },
+    "axis": "horizontal",
+    "category": "custom",
+    "id": "927F2119-40C5-4E2B-94A8-3DA0C924E5B0",
+    "targetArea": {
+      "area": {
+        "segments": [
+          {
+            "frame": [
+              [12,6],
+              [12,6]
+            ],
+            "id": "C8B199B2-3CDF-4CAA-AC96-404303383C86"
+          }
+        ]
+      },
+      "available": true
+    },
+    "keyboardShortcut": {
+      "available": true,
+      "enabled": true,
+      "shortcut": {
+        "carbonKeyCode": 40,
+        "carbonModifiers": 6144
+      }
+    },
+    "legacyKey": "expandWindowSouthEastComboKey",
+    "name": "command:default.name.bottomRight",
+    "visibleInGreenButtonMenu": {
+      "available": true,
+      "enabled": true
+    },
+    "visibleInMenuBar": {
+      "available": true,
+      "enabled": true
+    }
+  },
+  {
+    "axis": "horizontal",
+    "category": "divider",
+    "id": "C3ABC395-E9A7-4EAA-842C-AE7DA3D87275",
+    "visibleInGreenButtonMenu": {
+      "available": true,
+      "enabled": true
+    },
+    "visibleInMenuBar": {
+      "available": true,
+      "enabled": true
+    }
+  },
+  {
+    "activationArea": {
+      "area": {
+        "segments": [
+          {
+            "frame": [
+              [1,11],
+              [6,1]
+            ],
+            "id": "CD8EAF42-C5D0-439B-81ED-C624D50CA07C"
+          }
+        ]
+      },
+      "available": true,
+      "enabled": true
+    },
+    "axis": "horizontal",
+    "category": "custom",
+    "id": "54F4708E-F4FC-4E2C-80FF-B39F753B65CC",
+    "targetArea": {
+      "area": {
+        "segments": [
+          {
+            "frame": [
+              [0,0],
+              [8,12]
+            ],
+            "id": "374658FA-137B-44BD-B487-2D336F0F8ADA"
+          }
+        ]
+      },
+      "available": true
+    },
+    "keyboardShortcut": {
+      "available": true,
+      "enabled": true,
+      "shortcut": {
+        "carbonKeyCode": 2,
+        "carbonModifiers": 6144
+      }
+    },
+    "legacyKey": "expandWindowLeftThirdComboKey",
+    "name": "command:default.name.leftThird",
+    "visibleInGreenButtonMenu": {
+      "available": true,
+      "enabled": true
+    },
+    "visibleInMenuBar": {
+      "available": true,
+      "enabled": true
+    }
+  },
+  {
+    "activationArea": {
+      "area": {
+        "segments": [
+          {
+            "frame": [
+              [9,11],
+              [6,1]
+            ],
+            "id": "0CEB929F-FD80-43D4-96D8-304E03C2B62A"
+          }
+        ]
+      },
+      "available": true,
+      "enabled": true
+    },
+    "axis": "horizontal",
+    "category": "custom",
+    "id": "1526E598-5BFD-417C-8B56-78D34D88484D",
+    "targetArea": {
+      "area": {
+        "segments": [
+          {
+            "frame": [
+              [8,0],
+              [8,12]
+            ],
+            "id": "BFE0D3A5-D8A2-46FC-9FA3-CAEE49E31E2D"
+          }
+        ]
+      },
+      "available": true
+    },
+    "keyboardShortcut": {
+      "available": true,
+      "enabled": true,
+      "shortcut": {
+        "carbonKeyCode": 3,
+        "carbonModifiers": 6144
+      }
+    },
+    "legacyKey": "expandWindowCenterThirdComboKey",
+    "name": "command:default.name.centerThird",
+    "visibleInGreenButtonMenu": {
+      "available": true,
+      "enabled": true
+    },
+    "visibleInMenuBar": {
+      "available": true,
+      "enabled": true
+    }
+  },
+  {
+    "activationArea": {
+      "area": {
+        "segments": [
+          {
+            "frame": [
+              [17,11],
+              [6,1]
+            ],
+            "id": "BE30765F-EEF4-454F-98CC-45E4DB1AA912"
+          }
+        ]
+      },
+      "available": true,
+      "enabled": true
+    },
+    "axis": "horizontal",
+    "category": "custom",
+    "id": "340061EF-E107-4F91-AD3F-BF181D7A258A",
+    "targetArea": {
+      "area": {
+        "segments": [
+          {
+            "frame": [
+              [16,0],
+              [8,12]
+            ],
+            "id": "0048238E-CCCB-46FC-BC3A-AA92D9208935"
+          }
+        ]
+      },
+      "available": true
+    },
+    "keyboardShortcut": {
+      "available": true,
+      "enabled": true,
+      "shortcut": {
+        "carbonKeyCode": 5,
+        "carbonModifiers": 6144
+      }
+    },
+    "legacyKey": "expandWindowRightThirdComboKey",
+    "name": "command:default.name.rightThird",
+    "visibleInGreenButtonMenu": {
+      "available": true,
+      "enabled": true
+    },
+    "visibleInMenuBar": {
+      "available": true,
+      "enabled": true
+    }
+  },
+  {
+    "axis": "horizontal",
+    "category": "divider",
+    "id": "863B04D1-3A36-38AB-A490-C08E18FA6EF8",
+    "visibleInGreenButtonMenu": {
+      "available": true,
+      "enabled": true
+    },
+    "visibleInMenuBar": {
+      "available": true,
+      "enabled": true
+    }
+  },
+  {
+    "activationArea": {
+      "area": {
+        "segments": [
+          {
+            "frame": [
+              [7,11],
+              [2,1]
+            ],
+            "id": "699CA82C-9EFF-4C89-A858-6B432E5C3891"
+          }
+        ]
+      },
+      "available": true,
+      "enabled": true
+    },
+    "axis": "horizontal",
+    "category": "custom",
+    "id": "531E4C43-0B53-4C7F-AED8-0654F38CAFE0",
+    "targetArea": {
+      "area": {
+        "segments": [
+          {
+            "frame": [
+              [0,0],
+              [16,12]
+            ],
+            "id": "B30D3D14-EF39-413F-815D-F4B310130A67"
+          }
+        ]
+      },
+      "available": true
+    },
+    "keyboardShortcut": {
+      "available": true,
+      "enabled": true,
+      "shortcut": {
+        "carbonKeyCode": 14,
+        "carbonModifiers": 6144
+      }
+    },
+    "legacyKey": "expandWindowLeftTwoThirdsComboKey",
+    "name": "command:default.name.leftTwoThirds",
+    "visibleInGreenButtonMenu": {
+      "available": true,
+      "enabled": true
+    },
+    "visibleInMenuBar": {
+      "available": true,
+      "enabled": true
+    }
+  },
+  {
+    "activationArea": {
+      "area": {
+        "segments": [
+          {
+            "frame": [
+              [11,10],
+              [2,1]
+            ],
+            "id": "9A526049-7EB4-4D06-B4D2-94C83426BF72"
+          }
+        ]
+      },
+      "available": true,
+      "enabled": true
+    },
+    "axis": "horizontal",
+    "category": "custom",
+    "id": "8050D2F9-2CE0-43AD-884E-40B0CD8D55C8",
+    "targetArea": {
+      "area": {
+        "segments": [
+          {
+            "frame": [
+              [4,0],
+              [16,12]
+            ],
+            "id": "3636493E-367A-45A3-A434-6C8B8AC72FDB"
+          }
+        ]
+      },
+      "available": true
+    },
+    "keyboardShortcut": {
+      "available": true,
+      "enabled": true,
+      "shortcut": {
+        "carbonKeyCode": 15,
+        "carbonModifiers": 6144
+      }
+    },
+    "name": "command:default.name.centerTwoThirds",
+    "visibleInGreenButtonMenu": {
+      "available": true,
+      "enabled": true
+    },
+    "visibleInMenuBar": {
+      "available": true,
+      "enabled": true
+    }
+  },
+  {
+    "activationArea": {
+      "area": {
+        "segments": [
+          {
+            "frame": [
+              [15,11],
+              [2,1]
+            ],
+            "id": "21912DCF-307E-4E8A-AE69-74C73452B0B3"
+          }
+        ]
+      },
+      "available": true,
+      "enabled": true
+    },
+    "axis": "horizontal",
+    "category": "custom",
+    "id": "A0F3D8E9-416F-487C-9919-D6E6E2977459",
+    "targetArea": {
+      "area": {
+        "segments": [
+          {
+            "frame": [
+              [8,0],
+              [16,12]
+            ],
+            "id": "D92B788B-4B08-4427-8CA1-529D0EBB0FEB"
+          }
+        ]
+      },
+      "available": true
+    },
+    "keyboardShortcut": {
+      "available": true,
+      "enabled": true,
+      "shortcut": {
+        "carbonKeyCode": 17,
+        "carbonModifiers": 6144
+      }
+    },
+    "legacyKey": "expandWindowRightTwoThirdsComboKey",
+    "name": "command:default.name.rightTwoThirds",
+    "visibleInGreenButtonMenu": {
+      "available": true,
+      "enabled": true
+    },
+    "visibleInMenuBar": {
+      "available": true,
+      "enabled": true
+    }
+  },
+  {
+    "axis": "horizontal",
+    "category": "divider",
+    "id": "48BACBA7-7328-4830-9B5F-A8CE7E921510",
+    "visibleInGreenButtonMenu": {
+      "available": true,
+      "enabled": true
+    },
+    "visibleInMenuBar": {
+      "available": true,
+      "enabled": true
+    }
+  },
+  {
+    "axis": "horizontal",
+    "category": "special",
+    "id": "40C36D54-6BCE-4216-B75F-83BCC582AC41",
+    "keyboardShortcut": {
+      "available": true,
+      "enabled": true,
+      "shortcut": {
+        "carbonKeyCode": 124,
+        "carbonModifiers": 6400
+      }
+    },
+    "legacyKey": "moveWindowToNextDisplay",
+    "name": "command:default.name.nextDisplay",
+    "specialType": "nextDisplay",
+    "visibleInGreenButtonMenu": {
+      "available": true,
+      "enabled": true
+    },
+    "visibleInMenuBar": {
+      "available": true,
+      "enabled": true
+    }
+  },
+  {
+    "axis": "horizontal",
+    "category": "special",
+    "id": "6015A134-0019-4CFB-819B-215D74F0F97F",
+    "keyboardShortcut": {
+      "available": true,
+      "enabled": true,
+      "shortcut": {
+        "carbonKeyCode": 123,
+        "carbonModifiers": 6400
+      }
+    },
+    "legacyKey": "moveWindowToPreviousDisplay",
+    "name": "command:default.name.previousDisplay",
+    "specialType": "previousDisplay",
+    "visibleInGreenButtonMenu": {
+      "available": true,
+      "enabled": true
+    },
+    "visibleInMenuBar": {
+      "available": true,
+      "enabled": true
+    }
+  },
+  {
+    "axis": "horizontal",
+    "category": "divider",
+    "id": "06383E62-2C7E-4857-A4BD-1C786247F3B7",
+    "visibleInGreenButtonMenu": {
+      "available": true,
+      "enabled": true
+    },
+    "visibleInMenuBar": {
+      "available": true,
+      "enabled": true
+    }
+  },
+  {
+    "activationArea": {
+      "area": {
+        "segments": [
+          {
+            "frame": [
+              [1,0],
+              [22,1]
+            ],
+            "id": "B9541DA4-4CE9-11EE-BE56-0242AC120002"
+          }
+        ]
+      },
+      "available": true,
+      "enabled": true
+    },
+    "axis": "horizontal",
+    "category": "custom",
+    "id": "9551C12F-3DE4-4E85-AF2F-0B9579EB11E3",
+    "targetArea": {
+      "area": {
+        "segments": [
+          {
+            "frame": [
+              [0,0],
+              [24,12]
+            ],
+            "id": "64B2C1D4-4D60-11EE-BE56-0242AC120002"
+          }
+        ]
+      },
+      "available": true
+    },
+    "keyboardShortcut": {
+      "available": true,
+      "enabled": true,
+      "shortcut": {
+        "carbonKeyCode": 36,
+        "carbonModifiers": 6144
+      }
+    },
+    "legacyKey": "maximizeWindowComboKey",
+    "name": "command:default.name.maximize",
+    "visibleInGreenButtonMenu": {
+      "available": true,
+      "enabled": true
+    },
+    "visibleInMenuBar": {
+      "available": true,
+      "enabled": true
+    }
+  },
+  {
+    "axis": "horizontal",
+    "category": "special",
+    "id": "D77D4D10-E411-49B1-9146-3B706B163BDB",
+    "keyboardShortcut": {
+      "available": true,
+      "enabled": true,
+      "shortcut": {
+        "carbonKeyCode": 8,
+        "carbonModifiers": 6144
+      }
+    },
+    "legacyKey": "centerWindowComboKey",
+    "name": "command:default.name.center",
+    "specialType": "center",
+    "visibleInGreenButtonMenu": {
+      "available": true,
+      "enabled": true
+    },
+    "visibleInMenuBar": {
+      "available": true,
+      "enabled": true
+    }
+  },
+  {
+    "axis": "horizontal",
+    "category": "special",
+    "id": "3D1FF37C-012E-48E6-A3FA-4D01E02C74C8",
+    "keyboardShortcut": {
+      "available": true,
+      "enabled": true,
+      "shortcut": {
+        "carbonKeyCode": 51,
+        "carbonModifiers": 6144
+      }
+    },
+    "legacyKey": "restoreWindowComboKey",
+    "name": "command:default.name.restore",
+    "specialType": "restore",
+    "visibleInGreenButtonMenu": {
+      "available": true,
+      "enabled": true
+    },
+    "visibleInMenuBar": {
+      "available": true,
+      "enabled": true
+    }
+  },
+  {
+    "axis": "horizontal",
+    "category": "special",
+    "id": "285DD33D-76BC-48E4-9D1E-2D2CB1F6FB9A",
+    "keyboardShortcut": {
+      "available": true,
+      "enabled": true,
+      "shortcut": {
+        "carbonKeyCode": 126,
+        "carbonModifiers": 6400
+      }
+    },
+    "name": "command:default.name.stayOnTop",
+    "specialType": "stayOnTop",
+    "visibleInGreenButtonMenu": {
+      "available": true,
+      "enabled": false
+    },
+    "visibleInMenuBar": {
+      "available": true,
+      "enabled": true
+    }
+  }
+]
