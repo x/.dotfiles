@@ -37,6 +37,9 @@ export PROMPT_COMMAND="history -a; history -n"
 # Set the default editor to vim
 export EDITOR=vim
 
+# No bell on tab completion
+unsetopt LIST_BEEP
+
 # Set up pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
@@ -112,5 +115,5 @@ if command -v bat 1>/dev/null 3>&1; then alias cat='bat --paging=never'; fi
 
 function notify {
     local message="${*:-$([ $? -eq 0 ] && echo 'SUCCESS' || echo 'FAILED')}"
-    osascript -e "tell application \"System Events\" to display dialog \"$message\" buttons {\"OK\"} default button \"OK\" with icon note"
+    osascript -e "tell application \"System Events\" to display dialog \"$message\" buttons {\"ack\"} default button \"ack\""
 }
