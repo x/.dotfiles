@@ -1,6 +1,6 @@
 [user]
 	name = Devon Peticolas
-	email = devon.peticolas@scale.com
+    email = devon.peticolas@scale.com
 [color]
 	ui = true
 [color "status"]
@@ -22,7 +22,8 @@
 	s = status
 	sup = submodule update --init --recursive
 	ten = !git --no-pager log -10 --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-	actions = "!f(){ open \"$(gh repo view --json url -q '.url')/actions?query=branch%3A$(git branch --show-current)\"; }; f"
+    actions = "!f(){ open \"$(gh repo view --json url -q '.url')/actions?query=branch%3A$(git branch --show-current)\"; }; f"
+    kd = "difftool --no-symlinks --dir-diff"
 [push]
 	default = current
 	autoSetupRemote = true
@@ -55,3 +56,15 @@
 
 [merge]
     conflictStyle = zdiff3
+
+[diff]
+    tool = kitty
+    guitool = kitty.gui
+[difftool]
+    prompt = false
+    trustExitCode = true
+[difftool "kitty"]
+    cmd = kitten diff $LOCAL $REMOTE
+[difftool "kitty.gui"]
+    cmd = kitten diff $LOCAL $REMOTE
+

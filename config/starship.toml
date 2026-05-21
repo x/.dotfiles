@@ -1,0 +1,65 @@
+# Prompt layout:
+#   Line 1 (only if any cloud/kube context is active): provider + cluster info
+#   Line 2: directory + git branch + git status
+#   Line 3: prompt character
+format = """
+$aws\
+$gcloud\
+$azure\
+$kubernetes\
+$line_break\
+$directory\
+$git_branch\
+$git_status\
+$line_break\
+$character"""
+
+add_newline = false
+
+[character]
+success_symbol = "[\\$](bold)"
+error_symbol = "[\uf467](bold red)"
+
+[directory]
+style = 'none'
+truncate_to_repo = false
+truncation_length = 0
+
+# ── Cloud Providers ──────────────────────────────────────────────
+
+[aws]
+symbol = "\ue7ad "
+format = '([$symbol](dimmed)$profile )'
+
+[gcloud]
+symbol = '󱇶 '
+format = '([$symbol](dimmed)$active )'
+
+[azure]
+disabled = false
+symbol = '󰠅 '
+format = '([$symbol](dimmed)$subscription )'
+
+# ── Kubernetes ───────────────────────────────────────────────────
+
+[kubernetes]
+disabled = false
+symbol = "\ue81d "
+format = '([$symbol](dimmed)$context )'
+
+# Strip everything up to the last / in context names
+# e.g. arn:aws:eks:us-east-1:123456:cluster/my-cluster → my-cluster
+[[kubernetes.contexts]]
+context_pattern = '^.+/(?P<name>.+)$'
+context_alias = '$name'
+
+# ── Git ──────────────────────────────────────────────────────────
+
+[git_branch]
+symbol = "\ue725 "
+format = '[$symbol](dimmed)$branch '
+
+# ── Disabled ─────────────────────────────────────────────────────
+
+[python]
+disabled = true
