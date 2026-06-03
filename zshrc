@@ -25,8 +25,9 @@ setopt SHARE_HISTORY EXTENDED_HISTORY INC_APPEND_HISTORY_TIME HIST_IGNORE_ALL_DU
 # atuin: every command from every pane, searchable via ctrl-r
 eval "$(atuin init zsh --disable-up-arrow)"
 
-# Set the default editor to vim
-export EDITOR=vim
+# Set the default editor to nvim
+export EDITOR=nvim
+export vim=nvim
 
 # No bell on tab completion
 unsetopt LIST_BEEP
