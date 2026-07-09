@@ -164,9 +164,37 @@ vim.api.nvim_create_user_command("LspCheck", function()
 end, {})
 
 ---------- Theme ----------
+-- Follow the terminal's light/dark mode (kitty tracks the OS): query the
+-- terminal background via OSC 11 at startup and on focus, pick the
+-- colorscheme from the reply.
 
-vim.o.background = "dark"
 vim.o.termguicolors = true
-vim.cmd("colorscheme dracula")
-vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
-vim.api.nvim_set_hl(0, "NonText", { bg = "NONE" })
+
+local function set_theme(bg)
+	vim.o.background = bg
+	vim.cmd.colorscheme(bg == "light" and "dracula-alucard" or "dracula")
+	vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
+	vim.api.nvim_set_hl(0, "NonText", { bg = "NONE" })
+end
+
+set_theme("dark")
+
+vim.api.nvim_create_autocmd({ "UIEnter", "FocusGained", "VimResume" }, {
+	callback = function()
+		io.stdout:write("\27]11;?\a")
+	end,
+})
+
+vim.api.nvim_create_autocmd("TermResponse", {
+	callback = function(args)
+		local r, g, b = args.data.sequence:match("\27%]11;rgba?:(%x%x)%x*/(%x%x)%x*/(%x%x)%x*")
+		if not r then
+			return
+		end
+		local lum = 0.299 * tonumber(r, 16) + 0.587 * tonumber(g, 16) + 0.114 * tonumber(b, 16)
+		local bg = lum > 127 and "light" or "dark"
+		if bg ~= vim.o.background then
+			set_theme(bg)
+		end
+	end,
+})
