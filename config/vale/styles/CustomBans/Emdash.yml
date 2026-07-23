@@ -1,0 +1,9 @@
+extends: existence
+message: |
+  Avoid the emdash ('%s'). 
+  • For definitions: Use a colon ("Term: Description").
+  • For examples: Use ", e.g." ("Category, e.g. Item").
+  • For asides: Use parentheses (like this), or write separate sentences.
+level: error
+raw:
+  - '—'

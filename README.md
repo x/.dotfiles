@@ -14,6 +14,7 @@ ln -sF $HOME/.dotfiles/config/kitty           ~/.config/kitty
 ln -sF $HOME/.dotfiles/config/bat             ~/.config/bat
 ln -sF $HOME/.dotfiles/config/nvim            ~/.config/nvim
 ln -sF $HOME/.dotfiles/config/starship.toml   ~/.config/starship.toml
+ln -sF $HOME/.dotfiles/config/vale            ~/.config/vale
 ln -sF $HOME/.dotfiles/gitconfig              ~/.gitconfig
 ln -sF $HOME/.dotfiles/claude/settings.json   ~/.claude/settings.json
 ln -sF $HOME/.dotfiles/xvimrc                 ~/.xvimrc

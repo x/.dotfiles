@@ -1,0 +1,6 @@
+extends: existence
+message: "Avoid the 'Not because X, but because Y' rhetorical pattern: '%s'"
+level: error
+ignorecase: true
+tokens:
+  - 'not because [^.!?;]+,?\s+but because'

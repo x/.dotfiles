@@ -1,0 +1,6 @@
+extends: existence
+message: "Avoid using '%s' as an intensifier, we don't need to assert that something is genuine"
+level: error
+ignorecase: true
+tokens:
+  - genuinely

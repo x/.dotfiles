@@ -1,0 +1,7 @@
+extends: existence
+message: "Avoid the 'It's not X, it's Y' rhetorical pattern: '%s'"
+level: error
+ignorecase: true
+tokens:
+  - "it['’]?s not [^.!?;]+, it['’]?s"
+  - "it is not [^.!?;]+, it is"

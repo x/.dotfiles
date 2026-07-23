@@ -1,0 +1,5 @@
+extends: existence
+message: "Avoid unicode arrow characters ('%s'). Just write multiple sentences."
+level: error
+raw:
+  - '[←→↑↓↔↕⇒⇔⇐➔➜➝➞]'

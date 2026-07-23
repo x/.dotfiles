@@ -1,0 +1,6 @@
+extends: existence
+message: "Avoid using '%s' as an intensifier, we don't need to assert realness"
+level: error
+ignorecase: true
+tokens:
+  - is real

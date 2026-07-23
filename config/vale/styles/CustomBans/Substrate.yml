@@ -1,0 +1,6 @@
+extends: existence
+message: "Avoid using '%s' to describe something"
+level: error
+ignorecase: true
+tokens:
+  - substrate

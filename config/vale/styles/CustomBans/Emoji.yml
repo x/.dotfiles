@@ -1,0 +1,5 @@
+extends: existence
+message: "Avoid emoji ('%s'). Write plain prose instead of decorating it."
+level: error
+raw:
+  - '[\x{2190}-\x{21FF}\x{2300}-\x{23FF}\x{2460}-\x{24FF}\x{2600}-\x{27BF}\x{2B00}-\x{2BFF}\x{FE00}-\x{FE0F}\x{1F000}-\x{1FAFF}]'

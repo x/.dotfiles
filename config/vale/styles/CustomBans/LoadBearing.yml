@@ -1,0 +1,6 @@
+extends: existence
+message: "Avoid describing something as '%s'"
+level: error
+ignorecase: true
+tokens:
+  - load[- ]bearing
