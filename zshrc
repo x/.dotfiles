@@ -27,7 +27,7 @@ eval "$(atuin init zsh --disable-up-arrow)"
 
 # Set the default editor to nvim
 export EDITOR=nvim
-export vim=nvim
+alias vim=nvim
 
 # No bell on tab completion
 unsetopt LIST_BEEP
@@ -57,3 +57,6 @@ function notify {
 }
 
 alias yolo="claude --dangerously-skip-permissions"
+
+# Vale
+export VALE_CONFIG_PATH="$HOME/.config/vale/.vale.ini"

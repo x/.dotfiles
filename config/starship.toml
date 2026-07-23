@@ -4,7 +4,6 @@
 #   Line 3: prompt character
 format = """
 $aws\
-$gcloud\
 $azure\
 $kubernetes\
 $line_break\
@@ -13,6 +12,7 @@ $git_branch\
 $git_status\
 $line_break\
 $character"""
+#$gcloud\
 
 add_newline = false
 
