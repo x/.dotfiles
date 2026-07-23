@@ -1,0 +1,110 @@
+{
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+  "permissions": {
+    "allow": [
+      "Bash(uv:*)",
+      "Bash(uvx:*)",
+      "Bash(python:*)",
+      "Bash(python3:*)",
+      "Bash(pytest:*)",
+      "Bash(ruff:*)",
+      "Bash(ty:*)",
+      "Bash(git:*)",
+      "Bash(gh:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(grep:*)",
+      "Bash(find:*)",
+      "Read",
+      "Edit",
+      "Write",
+      "Skill",
+      "WebFetch",
+      "WebSearch",
+      "mcp__plugin_playwright_playwright__*"
+    ],
+    "defaultMode": "auto"
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash -c 'input=$(cat); dir=$(echo \"$input\" | jq -r \".workspace.current_dir // .cwd // \\\"\\\"\"); used_pct=$(echo \"$input\" | jq -r \".context_window.used_percentage // empty\"); prompt=$(cd \"$dir\" 2>/dev/null && starship prompt --status=0 2>/dev/null); ESC=$(printf \"\\033\"); prompt=$(printf \"%s\" \"$prompt\" | sed \"s/%{//g; s/%}//g\" | sed \"s/${ESC}\\[[0-9;]*m//g\" | tr \"\\n\" \" \" | sed \"s/[[:space:]]*\\$//\" | sed \"s/[\\$❯][[:space:]]*\\$//\"); if [ -n \"$used_pct\" ]; then ctx=$(printf \"%.0f\" \"$used_pct\"); prompt=\"${prompt} ctx:${ctx}%\"; fi; printf \"%s\" \"$prompt\"'"
+  },
+  "enabledPlugins": {
+    "playwright@claude-plugins-official": true,
+    "slack@claude-plugins-official": true,
+    "staff-engineer-reviewer@scale-ai-agents": true,
+    "x@x-skills": true,
+    "temporal@temporal-marketplace": true,
+    "agentex@scale-ai-agents": true,
+    "swift-lsp@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "x-skills": {
+      "source": {
+        "source": "directory",
+        "path": "/Users/devon.peticolas/personal_src/skills"
+      }
+    },
+    "temporal-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "temporalio/claude-temporal-plugin"
+      }
+    }
+  },
+  "cleanupPeriodDays": 365,
+  "effortLevel": "xhigh",
+  "tui": "fullscreen",
+  "autoDreamEnabled": true,
+  "skipDangerousModePermissionPrompt": true,
+  "skipWorkflowUsageWarning": true,
+  "theme": "auto",
+  "editorMode": "vim",
+  "agentPushNotifEnabled": true,
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "rtk hook claude"
+          }
+        ]
+      },
+      {
+        "matcher": "mcp__google-drive__.*|mcp__notion__.*|mcp__claude_ai_Linear__.*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/vale-mcp-lint.sh",
+            "timeout": 60,
+            "statusMessage": "vale lint (mcp)"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "f=$(jq -r '.tool_input.file_path // .tool_response.filePath'); case \"$f\" in *.py) uvx ruff check --quiet --output-format=concise \"$f\" 1>&2 || exit 2 ;; esac",
+            "timeout": 60,
+            "statusMessage": "ruff check"
+          },
+          {
+            "type": "command",
+            "command": "f=$(jq -r '.tool_input.file_path // .tool_response.filePath'); case \"$f\" in *.md|*.txt) command -v vale >/dev/null 2>&1 || exit 0; vale \"$f\" 1>&2 || exit 2 ;; esac",
+            "timeout": 60,
+            "statusMessage": "vale lint"
+          }
+        ]
+      }
+    ]
+  }
+}

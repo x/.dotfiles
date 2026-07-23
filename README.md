@@ -15,6 +15,7 @@ ln -sF $HOME/.dotfiles/config/bat             ~/.config/bat
 ln -sF $HOME/.dotfiles/config/nvim            ~/.config/nvim
 ln -sF $HOME/.dotfiles/config/starship.toml   ~/.config/starship.toml
 ln -sF $HOME/.dotfiles/gitconfig              ~/.gitconfig
+ln -sF $HOME/.dotfiles/claude/settings.json   ~/.claude/settings.json
 ln -sF $HOME/.dotfiles/xvimrc                 ~/.xvimrc
 ln -sF $HOME/.dotfiles/inputrc                ~/.inputrc
 ln -sF $HOME/.dotfiles/psqlrc                 ~/.psqlrc
