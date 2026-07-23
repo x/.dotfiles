@@ -1,6 +1,6 @@
 [user]
 	name = Devon Peticolas
-    email = devon.peticolas@scale.com
+	email = devon.peticolas@gmail.com
 [color]
 	ui = true
 [color "status"]
@@ -68,3 +68,9 @@
 [difftool "kitty.gui"]
     cmd = kitten diff $LOCAL $REMOTE
 
+[includeIf "gitdir:~/src/"]
+	path = ~/src/.gitconfig
+[includeIf "gitdir:~/work/"]
+	path = ~/work/.gitconfig
+[includeIf "gitdir:~/src/bp-scale-wells-agents/"]
+	path = ~/src/bp-scale-wells-agents/.gitconfig
